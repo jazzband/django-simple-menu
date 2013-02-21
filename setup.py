@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from distutils.core import setup, find_packages
+from setuptools import setup, find_packages
 
 setup(name='django-simple-menu',
       packages=find_packages(),
@@ -18,4 +18,5 @@ setup(name='django-simple-menu',
           'Natural Language :: English',
           'Topic :: Software Development :: Libraries',
           'Topic :: Software Development :: Libraries :: Python Modules',
-      ])
+      ],
+      install_requires=['setuptools'])
