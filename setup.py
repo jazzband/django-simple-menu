@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from distutils.core import setup, find_packages
 
 setup(name='django-simple-menu',
-      packages=['menu'],
-      version='1.0',
+      packages=find_packages(),
+      version='1.0.1',
       description='Simple, yet powerful, code-based menus for Django applications',
       long_description=open('README.rst').read(),
       author='Evan Borgstrom',
