@@ -4,12 +4,12 @@ import traceback
 import sys
 import re
 
-class Menu:
+class Menu(object):
     """
-    Menu is an class that generates menus
+    Menu is a class that generates menus
 
-    It allows for multiple named menus, which can then be generated as
-    HTML using the show_menu template tag.
+    It allows for multiple named menus, which can be accessed in your templates
+    using the generate_menu template tag.
 
     Menus are loaded from the INSTALLED_APPS, inside a file named
     menu.py. This file should import the Menu & MenuItem classes and
@@ -113,7 +113,7 @@ class Menu:
         # return only visible items
         return [item for item in c.items[name] if item.visible]
 
-class MenuItem:
+class MenuItem(object):
     """
     MenuItem represents an item in a menu, possibly one that has a sub-
     menu (children).
