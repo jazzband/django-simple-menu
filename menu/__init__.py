@@ -50,18 +50,13 @@ class Menu(object):
 
         # loop through our INSTALLED_APPS
         for app in settings.INSTALLED_APPS:
-            def is_app(names):
-                for name in names:
-                    if re.match(name, app):
-                        return True
-
-            # skip any django apps as well as ourselves
-            if is_app(("django", "utils", "main")):
+            # skip any django apps
+            if re.match("django", app):
                 continue
 
             menu_module = '%s.menu' % app
             try:
-                __import__(menu_module, fromlist=["main.menu",])
+                __import__(menu_module, fromlist=["menu",])
             except ImportError:
                 pass
 
