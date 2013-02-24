@@ -11,6 +11,11 @@ and more.
 It was built from scratch over the past 3 years as part of an internal
 system after we were not satisifed by all of the existing menu apps.
 
+Documentation
+-------------
+The documentation is located in the docs directory and can be viewed at:
+
+https://django-simple-menu.readthedocs.org
 
 Requirements
 ------------
