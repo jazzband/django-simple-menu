@@ -59,7 +59,7 @@ class Menu:
             if is_app(("django", "utils", "main")):
                 continue
 
-            menu_module = '%s.menu' % app
+            menu_module = '%s.menus' % app
             try:
                 __import__(menu_module, fromlist=["main.menu",])
             except ImportError:
