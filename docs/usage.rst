@@ -18,8 +18,8 @@ access from within your templates. This way you can have a menu for your main
 navigation, another menu for logged in users, another menu for anonymous users,
 etc.
 
-To define your menus you need to create a file named ``menu.py`` inside of the
-app that you wish to hook menus up to. In the ``menu.py`` file you should
+To define your menus you need to create a file named ``menus.py`` inside of the
+app that you wish to hook menus up to. In the ``menus.py`` file you should
 import the ``Menu`` and ``MenuItem`` classes from the ``menu`` package::
 
     from menu import Menu, MenuItem
