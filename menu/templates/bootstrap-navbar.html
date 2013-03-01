@@ -1,12 +1,12 @@
 {% for item in menu %}
 {% if item.separator %}<li class="divider-vertical"></li>{% endif %}
 <li class="{% if item.selected %} active{% endif %}{% if item.children %} dropdown{% endif %}" id="top-menu-{{ item.slug }}">
-{% if item.children %}
-<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}&nbsp;<b class="caret"></b></a>
-<ul class="dropdown-menu">
-    {% for child in item.children %}<li{% if child.selected %} class="active"{% endif %}><a href="{{ child.url }}">{{ child.title }}</a></li>{% endfor %}
+    {% if item.children %}
+    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}&nbsp;<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        {% for child in item.children %}<li{% if child.selected %} class="active"{% endif %}><a href="{{ child.url }}">{{ child.title }}</a></li>{% endfor %}
 </ul>
 {% else %}
 <a href="{{ item.url }}">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}</a>
-{% endif %}
+{% endif %}</li>
 {% endfor %}
