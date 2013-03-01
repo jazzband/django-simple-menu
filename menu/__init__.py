@@ -54,7 +54,7 @@ class Menu(object):
             if re.match("django", app):
                 continue
 
-            menu_module = '%s.menu' % app
+            menu_module = '%s.menus' % app
             try:
                 __import__(menu_module, fromlist=["menu",])
             except ImportError:
