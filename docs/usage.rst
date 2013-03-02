@@ -95,7 +95,7 @@ Example::
 Once you have your menus defined you need to incorporate them into your
 templates. This is done through the ``generate_menu`` template tag::
 
-    {% import menu %}{% generate_menu %}
+    {% load menu %}{% generate_menu %}
 
 Once you call ``generate_menu`` all of your MenuItems will be evaluated and
 the following items will be set in the context for you.
