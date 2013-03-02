@@ -5,8 +5,9 @@
     <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}&nbsp;<b class="caret"></b></a>
     <ul class="dropdown-menu">
         {% for child in item.children %}<li{% if child.selected %} class="active"{% endif %}><a href="{{ child.url }}">{{ child.title }}</a></li>{% endfor %}
-</ul>
-{% else %}
-<a href="{{ item.url }}">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}</a>
-{% endif %}</li>
+    </ul>
+    {% else %}
+    <a href="{{ item.url }}">{% if item.icon %}<i class="icon-{{ item.icon }} icon-white"></i>&nbsp;{% endif %}{{ item.title }}</a>
+    {% endif %}
+</li>
 {% endfor %}
