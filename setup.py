@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(name='django-simple-menu',
-      packages=find_packages(),
+      packages=['menu'],
+      include_package_data=True,
       version='1.0.4',
       description='Simple, yet powerful, code-based menus for Django applications',
       long_description=open('README.rst').read(),
