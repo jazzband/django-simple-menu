@@ -19,4 +19,4 @@ https://django-simple-menu.readthedocs.org
 
 Requirements
 ------------
-Django 1.0+
+Django 1.3+

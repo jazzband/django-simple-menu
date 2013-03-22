@@ -5,7 +5,7 @@ from setuptools import setup
 setup(name='django-simple-menu',
       packages=['menu'],
       include_package_data=True,
-      version='1.0.4',
+      version='1.0.5',
       description='Simple, yet powerful, code-based menus for Django applications',
       long_description=open('README.rst').read(),
       author='Evan Borgstrom',

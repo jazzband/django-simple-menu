@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.0.5 - Released March 22, 2013
+- Fixed missing template data in setup.py [Edke]
+
 Version 1.0.4 - Released March 1, 2013
 - Changed menu definition file from menu.py to menus.py [Edke]
 - Fixed missing tag in bootstrap template [Edke]
