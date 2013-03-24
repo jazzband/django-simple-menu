@@ -2,10 +2,12 @@
 
 from setuptools import setup
 
+from menu import VERSION_STRING
+
 setup(name='django-simple-menu',
       packages=['menu'],
       include_package_data=True,
-      version='1.0.5',
+      version=VERSION_STRING,
       description='Simple, yet powerful, code-based menus for Django applications',
       long_description=open('README.rst').read(),
       author='Evan Borgstrom',

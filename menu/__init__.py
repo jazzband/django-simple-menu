@@ -4,6 +4,10 @@ import traceback
 import sys
 import re
 
+VERSION = (1, 0, 6)
+VERSION_STRING = ".".join([str(v) for v in VERSION])
+VERSION_STRING_SHORT = ".".join([str(VERSION[0]), str(VERSION[1])])
+
 class Menu(object):
     """
     Menu is a class that generates menus

@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.0.6 - Released March 24, 2013
+- Added the example project
+
 Version 1.0.5 - Released March 22, 2013
 - Fixed missing template data in setup.py [Edke]
 
