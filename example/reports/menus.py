@@ -9,6 +9,6 @@ Menu.add_item("main", MenuItem("Staff Only",
                                reverse("reports.views.staff"),
                                check=lambda request: request.user.is_staff))
 
-Menu.add_item("main", MenuItem("Reports Index",
+Menu.add_item("main", MenuItem("Superuser Only",
                                reverse("reports.views.superuser"),
                                check=lambda request: request.user.is_superuser))
