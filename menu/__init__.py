@@ -193,7 +193,7 @@ class MenuItem(object):
         if self.exact_url:
             if re.match("%s$" % (self.url,), request.path):
                 matched = True
-        elif re.match(self.url, request.path):
+        elif re.match("%s" % self.url, request.path):
             matched = True
         return matched
 
