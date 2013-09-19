@@ -1,6 +1,11 @@
+<style>
+    .red a {
+        color: red;
+    }
+</style>
 <ul>
     {% for item in menu %}
     {% if item.separator %}<li>------------</li>{% endif %}
-    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    <li class={{ item.html_attrs.class }}><a href="{{ item.url }}">{{ item.title }}</a></li>
     {% endfor %}
 </ul>

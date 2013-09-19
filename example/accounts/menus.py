@@ -18,19 +18,23 @@ Menu.add_item("main", MenuItem("Accounts Index",
 # this item will be shown to users who are not logged in
 Menu.add_item("user", MenuItem("Login",
                                reverse('django.contrib.auth.views.login'),
-                               check=lambda request: not request.user.is_authenticated()))
+                               check=lambda request: not request.user.is_authenticated(),
+                               html_attrs={'class': 'red'}))
 
 # this will only be shown to logged in users and also demonstrates how to use
 # a callable for the title to return a customized title for each request
 Menu.add_item("user", MenuItem(profile_title,
                                reverse('accounts.views.profile'),
-                               check=lambda request: request.user.is_authenticated()))
+                               check=lambda request: request.user.is_authenticated(),
+                               html_attrs={'class': 'red'}))
 Menu.add_item("user", MenuItem("Logout",
                                reverse('django.contrib.auth.views.logout'),
-                               check=lambda request: request.user.is_authenticated()))
+                               check=lambda request: request.user.is_authenticated(),
+                               html_attrs={'class': 'red'}))
 
 # this only shows to superusers
 Menu.add_item("user", MenuItem("Admin",
                                reverse("admin:index"),
                                separator=True,
-                               check=lambda request: request.user.is_superuser))
+                               check=lambda request: request.user.is_superuser,
+                               html_attrs={'class': 'red'}))
