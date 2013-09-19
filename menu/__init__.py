@@ -120,7 +120,7 @@ class MenuItem(object):
 
     def __init__(self, title, url,children=[], weight=1, check=None,
                  visible=True, slug=None, exact_url=False, count_badge=None,
-                 icon=None, separator=False):
+                 icon=None, separator=False, html_attrs=None):
         """
         MenuItem constructor
 
@@ -138,6 +138,8 @@ class MenuItem(object):
         icon        an icon to use for the menu
         separator   a flag to indicate if a separator should be added prior
                     to the item
+        html_attrs  dictionnary of HTML attributes to apply to the generated 
+                    item. 
         """
 
         self.url = url
@@ -155,6 +157,7 @@ class MenuItem(object):
         self.count_badge = count_badge
         self.icon = icon
         self.separator = separator
+        self.html_attrs = html_attrs
 
         # if title is a callable store a reference to it for later
         # then we'll process it at runtime
