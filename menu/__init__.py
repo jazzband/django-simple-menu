@@ -221,3 +221,10 @@ class MenuItem(object):
             self.title = self._title(request)
         if self.slug is None:
             self.slug = re.sub(r'[^a-zA-Z0-9\-]+', '_', self.title.lower()).strip('_')
+
+    def has_submenu_selected(self):
+        for item in self.children:
+            if item.selected:
+                return True
+
+        return False
