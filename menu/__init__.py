@@ -173,6 +173,8 @@ class MenuItem(object):
         self.check_title(request)
         self.check_children(request)
 
+        self.children = [ kid for kid in self.children if kid.visible == True ]
+
         curitem = None
         for item in self.children:
             item.process(request)
