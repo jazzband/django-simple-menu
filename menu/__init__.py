@@ -16,7 +16,7 @@ class Menu(object):
     using the generate_menu template tag.
 
     Menus are loaded from the INSTALLED_APPS, inside a file named
-    menu.py. This file should import the Menu & MenuItem classes and
+    menus.py. This file should import the Menu & MenuItem classes and
     then call add_item:
 
     Menu.add_item("main", MenuItem("My item", reverse("myapp.views.myview"), weight=10))
