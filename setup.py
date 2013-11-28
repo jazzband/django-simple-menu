@@ -22,4 +22,4 @@ setup(name='django-simple-menu',
           'Topic :: Software Development :: Libraries',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ],
-      install_requires=['setuptools'])
+      install_requires=['setuptools', 'django>=1.3'])
