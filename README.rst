@@ -8,11 +8,11 @@ Simple Django Menus
            :target: https://coveralls.io/r/fatbox/django-simple-menu
 
 .. image:: https://pypip.in/v/django-simple-menu/badge.png
-           :target: https://crate.io/packages/stackstrap/
+           :target: https://crate.io/packages/django-simple-menu/
            :alt: Latest PyPI version
 
 .. image:: https://pypip.in/d/django-simple-menu/badge.png
-           :target: https://crate.io/packages/stackstrap/
+           :target: https://crate.io/packages/django-simple-menu/
            :alt: Number of PyPI downloads
 
 django-simple-menu is an entirely code based menu system, because, who
