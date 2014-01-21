@@ -4,3 +4,4 @@ include README.rst
 include CHANGES
 include AUTHORS
 recursive-include menu/templates *
+recursive-include menu/templatetags *
