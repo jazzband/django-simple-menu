@@ -1,6 +1,20 @@
 Simple Django Menus
 ===================
 
+.. image:: https://travis-ci.org/fatbox/django-simple-menu.png?branch=master
+           :target: https://travis-ci.org/fatbox/django-simple-menu
+
+.. image:: https://coveralls.io/repos/fatbox/django-simple-menu/badge.png
+           :target: https://coveralls.io/r/fatbox/django-simple-menu
+
+.. image:: https://pypip.in/v/django-simple-menu/badge.png
+           :target: https://crate.io/packages/stackstrap/
+           :alt: Latest PyPI version
+
+.. image:: https://pypip.in/d/django-simple-menu/badge.png
+           :target: https://crate.io/packages/stackstrap/
+           :alt: Number of PyPI downloads
+
 django-simple-menu is an entirely code based menu system, because, who
 really wants to define their menus in the django admin...
 
