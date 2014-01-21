@@ -14,5 +14,6 @@ Contents:
    :maxdepth: 2
 
    installation.rst
+   configuration.rst
    usage.rst
    example.rst

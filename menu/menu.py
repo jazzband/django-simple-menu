@@ -106,7 +106,26 @@ class Menu(object):
             curitem.selected = True
 
         # return only visible items
-        return [item for item in c.items[name] if item.visible]
+        visible = [
+            item
+            for item in c.items[name]
+            if item.visible
+        ]
+
+        # determine if we should apply 'selected' to parents when one of their
+        # children is the 'selected' menu
+        if getattr(settings, 'MENU_SELECT_PARENTS', False):
+            def is_child_selected(item):
+                for child in item.children:
+                    if child.selected or is_child_selected(child):
+                        return True
+
+            for item in visible:
+                if is_child_selected(item):
+                    item.selected = True
+
+        return visible
+
 
 class MenuItem(object):
     """
