@@ -9,7 +9,7 @@ install:
   - pip install --use-mirrors coveralls
   - pip install --use-mirrors nose
 
-script: coverage run --source=menu setup.py nosetests
+script: coverage run --source=menu `which django-admin.py` test --settings=menu.test_settings menu
 
 after_success:
   coveralls
