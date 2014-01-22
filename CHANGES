@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.0.8 - Released January 21, 2014
+- Added tests
+- Fixed #15, #13, #11, #10, #9, #8, #7
+
 Version 1.0.6 - Released March 24, 2013
 - Added the example project
 
