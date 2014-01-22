@@ -133,9 +133,8 @@ class MenuItem(object):
     menu (children).
     """
 
-    def __init__(self, title, url,children=[], weight=1, check=None,
-                 visible=True, slug=None, exact_url=False, count_badge=None,
-                 icon=None, separator=False):
+    def __init__(self, title, url, children=[], weight=1, check=None, 
+                 visible=True, slug=None, exact_url=False, **kwargs):
         """
         MenuItem constructor
 
@@ -149,10 +148,11 @@ class MenuItem(object):
                     the title if left as None
         exact_url   normally we check if the url matches the request prefix
                     this requires an exact match if set
-        count_badge a number to display inline with the menu item
-        icon        an icon to use for the menu
-        separator   a flag to indicate if a separator should be added prior
-                    to the item
+
+        All other keyword arguments passed into the MenuItem constructor are
+        assigned to the MenuItem object as attributes so that they may be used
+        in your templates. This allows you to attach arbitrary data and use it
+        in which ever way suits your menus the best.
         """
 
         self.url = url
@@ -167,9 +167,10 @@ class MenuItem(object):
         self.exact_url = exact_url
         self.selected = False
         self.parent = None
-        self.count_badge = count_badge
-        self.icon = icon
-        self.separator = separator
+
+        # merge our kwargs into our self
+        for k in kwargs:
+            setattr(self, k, kwargs[k])
 
         # if title is a callable store a reference to it for later
         # then we'll process it at runtime
