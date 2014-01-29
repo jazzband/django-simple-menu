@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.0.9 - Released January 29, 2014
+- Added documentation to the distribution [fladi] #17
+
 Version 1.0.8 - Released January 21, 2014
 - Added tests
 - Fixed #15, #13, #11, #10, #9, #8, #7
