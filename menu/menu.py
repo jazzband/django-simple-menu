@@ -51,7 +51,7 @@ class Menu(object):
         # loop through our INSTALLED_APPS
         for app in settings.INSTALLED_APPS:
             # skip any django apps
-            if re.match("django", app):
+            if app.startswith("django."):
                 continue
 
             menu_module = '%s.menus' % app
