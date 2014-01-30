@@ -1,8 +1,7 @@
 from django.conf import settings
 
-import traceback
-import sys
 import re
+
 
 class Menu(object):
     """
@@ -45,7 +44,7 @@ class Menu(object):
         """
 
         # we don't need to do this more than once
-        if c.loaded == True:
+        if c.loaded:
             return
 
         # loop through our INSTALLED_APPS
@@ -56,7 +55,7 @@ class Menu(object):
 
             menu_module = '%s.menus' % app
             try:
-                __import__(menu_module, fromlist=["menu",])
+                __import__(menu_module, fromlist=["menu"])
             except ImportError:
                 pass
 
@@ -69,8 +68,8 @@ class Menu(object):
         their weight
         """
         for name in c.items:
-            if c.sorted[name] != True:
-                c.items[name].sort(cmp=lambda x,y: cmp(x.weight, y.weight))
+            if not c.sorted[name]:
+                c.items[name].sort(cmp=lambda x, y: cmp(x.weight, y.weight))
                 c.sorted[name] = True
 
     @classmethod
@@ -96,7 +95,7 @@ class Menu(object):
         curitem = None
         for item in c.items[name]:
             item.process(request)
-            if item.visible == True:
+            if item.visible:
                 item.selected = False
                 if item.match_url(request):
                     if curitem is None or len(curitem.url) < len(item.url):
@@ -133,7 +132,7 @@ class MenuItem(object):
     menu (children).
     """
 
-    def __init__(self, title, url, children=[], weight=1, check=None, 
+    def __init__(self, title, url, children=[], weight=1, check=None,
                  visible=True, slug=None, exact_url=False, **kwargs):
         """
         MenuItem constructor
@@ -232,11 +231,7 @@ class MenuItem(object):
 
     def check_check(self, request):
         if callable(self.check):
-            check = self.check(request)
-            if check != True:
-                self.visible = False
-            else:
-                self.visible = True
+            self.visible = self.check(request)
 
     def check_title(self, request):
         if callable(self._title):
