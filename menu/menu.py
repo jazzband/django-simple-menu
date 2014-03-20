@@ -69,7 +69,7 @@ class Menu(object):
         """
         for name in c.items:
             if not c.sorted[name]:
-                c.items[name].sort(cmp=lambda x, y: cmp(x.weight, y.weight))
+                c.items[name].sort(key=lambda x: x.weight)
                 c.sorted[name] = True
 
     @classmethod
