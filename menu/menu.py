@@ -237,4 +237,5 @@ class MenuItem(object):
         if callable(self._title):
             self.title = self._title(request)
         if self.slug is None:
-            self.slug = re.sub(r'[^a-zA-Z0-9\-]+', '_', self.title.lower()).strip('_')
+            self.slug = re.sub(r'[^a-zA-Z0-9\-]+', '_',
+                               self.title.lower()).strip('_')
