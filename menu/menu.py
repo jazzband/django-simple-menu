@@ -185,18 +185,25 @@ class MenuItem(object):
         if not self.visible:
             return
 
+        # evaluate title
         self.check_title(request)
-        self.check_children(request)
 
-        children = [
-            kid
-            for kid in self.children
-            if kid.visible
-        ]
+        # evaluate children
+        visible_children = []
+        self.check_children(request)
+        for child in self.children:
+            child.process(request)
+            if child.visible:
+                visible_children.append(child)
+
+        if getattr(
+            settings, 'MENU_HIDE_EMPTY', False
+        ) and not self.check and not len(visible_children):
+            self.visible = False
+            return
 
         curitem = None
-        for item in children:
-            item.process(request)
+        for item in visible_children:
             item.selected = False
 
             if item.match_url(request):
