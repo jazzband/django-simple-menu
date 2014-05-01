@@ -1,6 +1,11 @@
+import re
+
 from django.conf import settings
 
-import re
+try:
+    from django.apps import apps
+except ImportError:
+    apps = False
 
 
 class Menu(object):
@@ -47,15 +52,20 @@ class Menu(object):
         if c.loaded:
             return
 
+        # Fetch all installed app names
+        app_names = settings.INSTALLED_APPS
+        if apps:
+            app_names = [app_config.name for app_config in apps.get_app_configs()]
+
         # loop through our INSTALLED_APPS
-        for app in settings.INSTALLED_APPS:
+        for app in app_names:
             # skip any django apps
             if app.startswith("django."):
                 continue
 
             menu_module = '%s.menus' % app
             try:
-                __import__(menu_module, fromlist=["menu"])
+                __import__(menu_module, fromlist=["menu", ])
             except ImportError:
                 pass
 
