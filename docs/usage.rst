@@ -33,6 +33,11 @@ the menu and the URL, and the keywords that affect menu generation are:
   and returns ``True`` or ``False`` if the ``MenuItem`` should be visible for
   this request
 
+Additional kwargs can be passed to ``MenuItem`` and these will become
+available in your templates. For example adding ``separator=True`` could be
+used to add separators to menus ``{% if item.separator %}<li
+class="divider"></li>{% endif %}``
+
 For the full list of ``MenuItem`` options see the `menu __init__.py source file`_. 
 
 Usage Example
