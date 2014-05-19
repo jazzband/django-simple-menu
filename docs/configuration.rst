@@ -11,5 +11,12 @@ MENU_SELECT_PARENTS
 their ``selected`` property set to ``True`` if one of their children has its
 ``selected`` property set to ``True``.
 
+MENU_HIDE_EMPTY
+-------------------
+**Default: ``False``**
+
+``MENU_HIDE_EMPTY`` controls if menu items without an explicit ``check`` callback
+should be visible even if they have no children
+
 
 .. _Django settings file: https://docs.djangoproject.com/en/dev/topics/settings/
