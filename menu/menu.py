@@ -196,9 +196,8 @@ class MenuItem(object):
             if child.visible:
                 visible_children.append(child)
 
-        if getattr(
-            settings, 'MENU_HIDE_EMPTY', False
-        ) and not self.check and not len(visible_children):
+        hide_empty = getattr(settings, 'MENU_HIDE_EMPTY', False)
+        if hide_empty and not self.check and not len(visible_children):
             self.visible = False
             return
 
