@@ -153,11 +153,12 @@ class MenuItem(object):
         in your templates. This allows you to attach arbitrary data and use it
         in which ever way suits your menus the best.
         """
+        self.default_visible = visible
 
         self.url = url
         self.title = title
         self._title = None
-        self.visible = visible
+        self.visible = self.default_visible
         self.children = children
         self.children_sorted = False
         self.weight = weight
@@ -230,6 +231,9 @@ class MenuItem(object):
             kid.parent = self
 
     def check_check(self, request):
+        # reset visibility on every request
+        self.visible = self.default_visible
+
         if callable(self.check):
             self.visible = self.check(request)
 
