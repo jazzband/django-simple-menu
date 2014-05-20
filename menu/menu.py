@@ -231,11 +231,10 @@ class MenuItem(object):
             kid.parent = self
 
     def check_check(self, request):
-        # reset visibility on every request
-        self.visible = self.default_visible
-
         if callable(self.check):
             self.visible = self.check(request)
+        else:
+            self.visible = self.default_visible
 
     def check_title(self, request):
         if callable(self._title):
