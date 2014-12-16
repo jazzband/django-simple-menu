@@ -14,7 +14,9 @@ class MenuTests(TestCase):
             MenuItem("kids2-2", "/kids2-2")
         ]
         kids3 = [
-            MenuItem("kids3-1", "/parent3/kids3-1")
+            MenuItem("kids3-1", "/parent3/kids3-1", children=[
+              MenuItem("kids3-1-1", "/parent3/kids3-1/kid1")
+            ])
         ]
 
         Menu.items = {}
@@ -49,6 +51,15 @@ class MenuTests(TestCase):
         self.assertEqual(Menu.items['test'][2].selected, False)
         self.assertEqual(Menu.items['test'][1].children[1].selected, True)
 
+        settings.MENU_SELECT_PARENTS = True
+        request = self.factory.get('/parent3/kids3-1/kid1')
+        Menu.process(request, 'test')
+        self.assertEqual(Menu.items['test'][0].selected, False)
+        self.assertEqual(Menu.items['test'][1].selected, False)
+        self.assertEqual(Menu.items['test'][1].children[1].selected, False)
+        self.assertEqual(Menu.items['test'][2].selected, True)
+        self.assertEqual(Menu.items['test'][2].children[0].selected, True)
+        self.assertEqual(Menu.items['test'][2].children[0].children[0].selected, True)
 
     def test_template_tag(self):
         """
