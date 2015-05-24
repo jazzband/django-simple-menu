@@ -1,4 +1,4 @@
 from .menu import Menu, MenuItem
 
-__version__ = '1.0.9'
-__url__ = 'https://github.com/fatbox/django-simple-menu'
+__version__ = '1.1.0'
+__url__ = 'https://github.com/borgstrom/django-simple-menu'

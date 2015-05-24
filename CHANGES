@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.1.0 - Released May 25, 2015
+- Transfer ownership to Evan Borgstrom
+
 Version 1.0.9 - Released January 29, 2014
 - Added documentation to the distribution [fladi] #17
 
