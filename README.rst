@@ -1,18 +1,18 @@
 Simple Django Menus
 ===================
 
-.. image:: https://travis-ci.org/fatbox/django-simple-menu.png?branch=master
-           :target: https://travis-ci.org/fatbox/django-simple-menu
+.. image:: https://img.shields.io/travis/borgstrom/django-simple-menu.svg
+           :target: https://travis-ci.org/borgstrom/django-simple-menu
 
-.. image:: https://coveralls.io/repos/fatbox/django-simple-menu/badge.png
-           :target: https://coveralls.io/r/fatbox/django-simple-menu
+.. image:: https://img.shields.io/coveralls/borgstrom/django-simple-menu.svg
+           :target: https://coveralls.io/r/borgstrom/django-simple-menu
 
-.. image:: https://pypip.in/v/django-simple-menu/badge.png
-           :target: https://crate.io/packages/django-simple-menu/
+.. image:: https://img.shields.io/pypi/v/django-simple-menu.svg
+           :target: https://pypi.python.org/pypi/django-simple-menu
            :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/django-simple-menu/badge.png
-           :target: https://crate.io/packages/django-simple-menu/
+.. image:: https://img.shields.io/pypi/dm/django-simple-menu.svg
+           :target: https://pypi.python.org/pypi/django-simple-menu
            :alt: Number of PyPI downloads
 
 django-simple-menu is an entirely code based menu system, because, who
