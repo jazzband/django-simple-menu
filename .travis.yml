@@ -23,10 +23,10 @@ matrix:
 install:
   - pip install -q -e .
   - pip install -q $DJANGO
-  - pip install -q --use-mirrors coveralls
-  - pip install -q --use-mirrors nose
+  - pip install -q codecov
+  - pip install -q nose
 
 script: coverage run --source=menu `which django-admin.py` test --settings=menu.test_settings menu
 
 after_success:
-  coveralls
+  - codecov

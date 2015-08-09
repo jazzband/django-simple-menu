@@ -4,8 +4,8 @@ Simple Django Menus
 .. image:: https://img.shields.io/travis/borgstrom/django-simple-menu.svg
            :target: https://travis-ci.org/borgstrom/django-simple-menu
 
-.. image:: https://img.shields.io/coveralls/borgstrom/django-simple-menu.svg
-           :target: https://coveralls.io/r/borgstrom/django-simple-menu
+.. image:: https://img.shields.io/codecov/c/github/borgstrom/django-simple-menu.svg
+           :target: https://codecov.io/github/borgstrom/django-simple-menu
 
 .. image:: https://img.shields.io/pypi/v/django-simple-menu.svg
            :target: https://pypi.python.org/pypi/django-simple-menu
