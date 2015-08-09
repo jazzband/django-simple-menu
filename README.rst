@@ -18,7 +18,7 @@ Simple Django Menus
 django-simple-menu is an entirely code based menu system, because, who
 really wants to define their menus in the django admin...
 
-It's simple to use yet provides enough flexibility to provide unlimited
+It's simple to use, yet provides enough flexibility to provide unlimited
 children menus, per-request generation and checking of menu items, badges,
 and more.
 
