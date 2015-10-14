@@ -85,10 +85,18 @@ Example::
 Once you have your menus defined you need to incorporate them into your
 templates. This is done through the ``generate_menu`` template tag::
 
-    {% load menu %}{% generate_menu %}
+    {% extends "base.html" %}
+    {% load menu %}
+    
+    {% block content %}
+    {% generate_menu %}
+    ...
+    {% endblock %}
+
+Note that ``generate_menu`` must be called inside of a block.
 
 Once you call ``generate_menu`` all of your MenuItems will be evaluated and
-the following items will be set in the context for you.
+the following items will be set in the context for you. 
 
 #. ``menus`` - This is an object that contains all of the lists of menus as
    attribute names::
