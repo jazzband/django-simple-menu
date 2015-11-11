@@ -114,9 +114,13 @@ class Menu(object):
         if curitem is not None:
             curitem.selected = True
 
+        def filter_visible_children(item):
+            item.children = [filter_visible_children(child) for child in item.children if child.visible]
+            return item
+
         # return only visible items
         visible = [
-            item
+            filter_visible_children(item)
             for item in c.items[name]
             if item.visible
         ]
