@@ -55,7 +55,10 @@ class Menu(object):
         # Fetch all installed app names
         app_names = settings.INSTALLED_APPS
         if apps:
-            app_names = [app_config.name for app_config in apps.get_app_configs()]
+            app_names = [
+                app_config.name
+                for app_config in apps.get_app_configs()
+            ]
 
         # loop through our INSTALLED_APPS
         for app in app_names:
@@ -115,7 +118,11 @@ class Menu(object):
             curitem.selected = True
 
         def filter_visible(items):
-            return [filter_visible_children(item) for item in items if item.visible]
+            return [
+                filter_visible_children(item)
+                for item in items
+                if item.visible
+            ]
 
         def filter_visible_children(item):
             item.children = filter_visible(item.children)
@@ -172,7 +179,6 @@ class MenuItem(object):
         self._title = None
         self.visible = visible
         self.children = children
-        self.children_sorted = False
         self.weight = weight
         self.check = check
         self.slug = slug
@@ -204,6 +210,7 @@ class MenuItem(object):
         # evaluate children
         visible_children = []
         self.check_children(request)
+        self.children.sort(key=lambda child: child.weight)
         for child in self.children:
             child.process(request)
             if child.visible:

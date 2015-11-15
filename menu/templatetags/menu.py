@@ -11,7 +11,7 @@ class MenuNode(template.Node):
         # if a 500 error happens we get an empty context, in which case
         # we should just return to let the 500.html template render
         if 'request' not in context:
-            return ''
+            return '<!-- menu failed to render due to missing request in the context -->'
 
         menus = Menu.process(context['request'])
 
