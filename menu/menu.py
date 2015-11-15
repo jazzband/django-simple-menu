@@ -114,12 +114,15 @@ class Menu(object):
         if curitem is not None:
             curitem.selected = True
 
+        def filter_visible(items):
+            return [filter_visible_children(item) for item in items if item.visible]
+
+        def filter_visible_children(item):
+            item.children = filter_visible(item.children)
+            return item
+
         # return only visible items
-        visible = [
-            item
-            for item in c.items[name]
-            if item.visible
-        ]
+        visible = filter_visible(c.items[name])
 
         # determine if we should apply 'selected' to parents when one of their
         # children is the 'selected' menu
