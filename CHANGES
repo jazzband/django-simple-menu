@@ -1,6 +1,11 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.1.1 - Released November 14, 2015
+- Implement child menu sorting #34
+- Fix bug: only display visible children #37
+- Improve tests
+
 Version 1.1.0 - Released May 25, 2015
 - Transfer ownership to Evan Borgstrom
 
