@@ -179,6 +179,7 @@ class MenuItem(object):
         self._title = None
         self.visible = visible
         self.children = children
+        self._children = None
         self.weight = weight
         self.check = check
         self.slug = slug
@@ -210,7 +211,7 @@ class MenuItem(object):
         # evaluate children
         visible_children = []
         self.check_children(request)
-        self.children.sort(key=lambda child: child.weight)
+
         for child in self.children:
             child.process(request)
             if child.visible:
@@ -245,17 +246,28 @@ class MenuItem(object):
         return matched
 
     def check_children(self, request):
-        if hasattr(self, '_children'):
-            self.children = self._children(request)
-        if callable(self.children):
-            kids = self.children(request)
+        """
+        Check children against the given request
+        """
+        if callable(self._children):
+            children = self._children(request)
+        elif callable(self.children):
+            children = self.children(request)
             self._children = self.children
-            self.children = kids
+        else:
+            children = self.children
 
-        for kid in self.children:
-            kid.parent = self
+        children = [child for child in children]
+        children.sort(key=lambda child: child.weight)
+        for child in children:
+            child.parent = self
+
+        self.children = children
 
     def check_check(self, request):
+        """
+        Set our visibility based on our check against the given request
+        """
         if callable(self.check):
             self.visible = self.check(request)
 

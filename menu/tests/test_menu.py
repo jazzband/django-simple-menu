@@ -7,37 +7,63 @@ from django.test.client import RequestFactory
 
 from menu import Menu, MenuItem
 
+# XXX TODO: test MENU_HIDE_EMPTY
+# XXX TODO: test check_children
+
 class MenuTests(TestCase):
+    """
+    Tests for Menu
+    """
+
     def setUp(self):
-        # allow the title of kids3-2 to be changed
+        """
+        Build some menus for our tests
+        """
         self.kids3_2_desired_title = None
         def kids3_2_title(request):
+            "Allow the title of kids3-2 to be changed"
             if self.kids3_2_desired_title is not None:
                 return "-".join([request.path, self.kids3_2_desired_title])
             return 'kids3-2'
 
-        # hide kids2-2 whenever the request path ends with /hidden
         def kids2_2_check(request):
+            "Hide kids2-2 whenever the request path ends with /hidden"
             if request.path.endswith('/hidden'):
                 return False
             return True
 
-        kids2 = [
-            MenuItem("kids2-1", "/parent2/kids2-1", weight=999),
-            MenuItem("kids2-2", "/kids2-2", check=kids2_2_check)
-        ]
-        kids3 = [
-            MenuItem("kids3-1", "/parent3/kids3-1", children=[
-              MenuItem("kids3-1-1", "/parent3/kids3-1/kid1", exact_url=True)
-            ]),
+        # Ensure we can pass children as tuples (or other iterables, like generators)
+        # Following the implementation of sorted children there was a bug reported due to children
+        # being passed as a tuple, which has no .sort method
+        # See: https://github.com/borgstrom/django-simple-menu/issues/38
+        def kids2():
+            "Generator for kids2"
+            class RepeatIterator(object):
+                "We need this to be reusable -- http://stackoverflow.com/a/1985733"
+                def __iter__(self):
+                    yield MenuItem("kids2-1", "/parent2/kids2-1", weight=999)
+                    yield MenuItem("kids2-2", "/kids2-2", check=kids2_2_check)
+            return RepeatIterator()
+
+        def kids3_1(request):
+            "Callable for kids3-1"
+            return [
+                MenuItem("kids3-1-1", "/parent3/kids3-1/kid1", exact_url=True),
+            ]
+
+        kids3 = (
+            MenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1),
             MenuItem(kids3_2_title, "/parent3/kids3-2")
-        ]
+        )
 
         Menu.items = {}
         Menu.sorted = {}
         Menu.loaded = False
+
+        # add our items.  because we set weight to 999 for parent 1 it will become the last child
+        # even though it's added first
         Menu.add_item("test", MenuItem("Parent 1", "/parent1", weight=999))
-        Menu.add_item("test", MenuItem("Parent 2", "/parent2", children=kids2))
+        Menu.add_item("test", MenuItem("Parent 2", "/parent2", children=kids2()))
         Menu.add_item("test", MenuItem("Parent 3", "/parent3", children=kids3))
 
         self.factory = RequestFactory()
@@ -152,6 +178,10 @@ class MenuTests(TestCase):
         self.assertEqual(out, "Parent 2,Parent 3,Parent 1,")
 
 class MenuItemTests(TestCase):
+    """
+    Tests for MenuItem
+    """
+
     def test_kwargs(self):
         """
         MenuItems should accept arbitrary keyword args
