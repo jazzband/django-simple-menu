@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.1.2 - Released November 21, 2015
+- Fix bug introduced in 1.1.1 surrounding child sorting #38
+- Improve tests
+
 Version 1.1.1 - Released November 14, 2015
 - Implement child menu sorting #34
 - Fix bug: only display visible children #37
