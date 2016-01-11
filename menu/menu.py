@@ -1,3 +1,4 @@
+import copy
 import re
 
 from django.conf import settings
@@ -105,8 +106,9 @@ class Menu(object):
         if name not in c.items:
             return []
 
+        items = copy.deepcopy(c.items[name])
         curitem = None
-        for item in c.items[name]:
+        for item in items:
             item.process(request)
             if item.visible:
                 item.selected = False
@@ -129,7 +131,7 @@ class Menu(object):
             return item
 
         # return only visible items
-        visible = filter_visible(c.items[name])
+        visible = filter_visible(items)
 
         # determine if we should apply 'selected' to parents when one of their
         # children is the 'selected' menu

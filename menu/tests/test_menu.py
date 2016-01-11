@@ -74,13 +74,13 @@ class MenuTests(TestCase):
         """
         # the extra stuff will still cause kids3-2 to be selected
         request = self.factory.get('/parent3/kids3-2/extra_stuff_here')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][1].children[1].selected, True)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[1].children[1].selected, True)
 
         # but here it won't, because exact_url is set
         request = self.factory.get('/parent3/kids3-1/kid1/extra_stuff_here')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][1].children[0].children[0].selected, False)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[1].children[0].children[0].selected, False)
 
     def test_callable_title(self):
         """
@@ -88,20 +88,20 @@ class MenuTests(TestCase):
         """
         self.kids3_2_desired_title = "fun"
         request = self.factory.get('/parent3')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][1].children[1].title, "/parent3-fun")
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[1].children[1].title, "/parent3-fun")
 
     def test_checks(self):
         """
         Ensure checks on menus work
         """
         request = self.factory.get('/kids2-2/visible')
-        Menu.process(request, 'test')
-        self.assertEqual(len(Menu.items['test'][0].children), 2)
+        items = Menu.process(request, 'test')
+        self.assertEqual(len(items[0].children), 2)
 
         request = self.factory.get('/kids2-2/hidden')
-        Menu.process(request, 'test')
-        self.assertEqual(len(Menu.items['test'][0].children), 1)
+        items = Menu.process(request, 'test')
+        self.assertEqual(len(items[0].children), 1)
 
     def test_select_parents(self):
         """
@@ -109,33 +109,33 @@ class MenuTests(TestCase):
         """
         settings.MENU_SELECT_PARENTS = False
         request = self.factory.get('/parent2/kids2-1')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][0].selected, True)
-        self.assertEqual(Menu.items['test'][0].children[1].selected, True)
-        self.assertEqual(Menu.items['test'][1].selected, False)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[0].selected, True)
+        self.assertEqual(items[0].children[1].selected, True)
+        self.assertEqual(items[1].selected, False)
 
         request = self.factory.get('/kids2-2')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][0].selected, False)
-        self.assertEqual(Menu.items['test'][0].children[0].selected, True)
-        self.assertEqual(Menu.items['test'][1].selected, False)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[0].selected, False)
+        self.assertEqual(items[0].children[0].selected, True)
+        self.assertEqual(items[1].selected, False)
 
         settings.MENU_SELECT_PARENTS = True
         request = self.factory.get('/kids2-2')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][0].selected, True)
-        self.assertEqual(Menu.items['test'][0].children[0].selected, True)
-        self.assertEqual(Menu.items['test'][1].selected, False)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[0].selected, True)
+        self.assertEqual(items[0].children[0].selected, True)
+        self.assertEqual(items[1].selected, False)
 
         request = self.factory.get('/parent3/kids3-1/kid1')
-        Menu.process(request, 'test')
-        self.assertEqual(Menu.items['test'][0].selected, False)
-        self.assertEqual(Menu.items['test'][0].children[1].selected, False)
-        self.assertEqual(Menu.items['test'][1].selected, True)
-        self.assertEqual(Menu.items['test'][1].children[0].selected, True)
-        self.assertEqual(Menu.items['test'][1].children[0].children[0].selected, True)
-        self.assertEqual(Menu.items['test'][1].children[1].selected, False)
-        self.assertEqual(Menu.items['test'][2].selected, False)
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[0].selected, False)
+        self.assertEqual(items[0].children[1].selected, False)
+        self.assertEqual(items[1].selected, True)
+        self.assertEqual(items[1].children[0].selected, True)
+        self.assertEqual(items[1].children[0].children[0].selected, True)
+        self.assertEqual(items[1].children[1].selected, False)
+        self.assertEqual(items[2].selected, False)
 
     def test_template_tag(self):
         """
