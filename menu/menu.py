@@ -1,7 +1,9 @@
 import copy
 import re
+import sys
 
 from django.conf import settings
+from django.utils.text import slugify
 
 try:
     from django.apps import apps
@@ -119,19 +121,12 @@ class Menu(object):
         if curitem is not None:
             curitem.selected = True
 
-        def filter_visible(items):
-            return [
-                filter_visible_children(item)
-                for item in items
-                if item.visible
-            ]
-
-        def filter_visible_children(item):
-            item.children = filter_visible(item.children)
-            return item
-
         # return only visible items
-        visible = filter_visible(items)
+        visible = [
+            item
+            for item in items
+            if item.visible
+        ]
 
         # determine if we should apply 'selected' to parents when one of their
         # children is the 'selected' menu
@@ -178,10 +173,8 @@ class MenuItem(object):
 
         self.url = url
         self.title = title
-        self._title = None
         self.visible = visible
         self.children = children
-        self._children = None
         self.weight = weight
         self.check = check
         self.slug = slug
@@ -193,39 +186,57 @@ class MenuItem(object):
         for k in kwargs:
             setattr(self, k, kwargs[k])
 
-        # if title is a callable store a reference to it for later
-        # then we'll process it at runtime
-        if callable(title):
-            self.title = ""
-            self._title = title
-
     def process(self, request):
         """
         process determines if this item should visible, if its selected, etc...
         """
-        self.check_check(request)
+        # evaluate our check
+        if callable(self.check):
+            self.visible = self.check(request)
+
+        # if we're not visible we return since we don't need to do anymore processing
         if not self.visible:
             return
 
-        # evaluate title
-        self.check_title(request)
+        # evaluate our title
+        if callable(self.title):
+            self.title = self.title(request)
+
+        # if no title is set turn it into a slug
+        if self.slug is None:
+            # in python3 we don't need to convert to unicode, in python2 slugify
+            # requires a unicode string
+            if sys.version_info > (3, 0):
+                self.slug = slugify(self.title)
+            else:
+                self.slug = slugify(unicode(self.title))
 
         # evaluate children
-        visible_children = []
-        self.check_children(request)
+        if callable(self.children):
+            children = list(self.children(request))
+        else:
+            children = list(self.children)
 
-        for child in self.children:
+        for child in children:
+            child.parent = self
             child.process(request)
-            if child.visible:
-                visible_children.append(child)
 
+        self.children = [
+            child
+            for child in children
+            if child.visible
+        ]
+        self.children.sort(key=lambda child: child.weight)
+
+        # if we have no children and MENU_HIDE_EMPTY then we are not visible and should return
         hide_empty = getattr(settings, 'MENU_HIDE_EMPTY', False)
-        if hide_empty and not self.check and not len(visible_children):
+        if hide_empty and len(self.children) == 0:
             self.visible = False
             return
 
+        # find out if one of our children is selected, and mark it as such
         curitem = None
-        for item in visible_children:
+        for item in self.children:
             item.selected = False
 
             if item.match_url(request):
@@ -246,36 +257,3 @@ class MenuItem(object):
         elif re.match("%s" % self.url, request.path):
             matched = True
         return matched
-
-    def check_children(self, request):
-        """
-        Check children against the given request
-        """
-        if callable(self._children):
-            children = self._children(request)
-        elif callable(self.children):
-            children = self.children(request)
-            self._children = self.children
-        else:
-            children = self.children
-
-        children = [child for child in children]
-        children.sort(key=lambda child: child.weight)
-        for child in children:
-            child.parent = self
-
-        self.children = children
-
-    def check_check(self, request):
-        """
-        Set our visibility based on our check against the given request
-        """
-        if callable(self.check):
-            self.visible = self.check(request)
-
-    def check_title(self, request):
-        if callable(self._title):
-            self.title = self._title(request)
-        if self.slug is None:
-            self.slug = re.sub(r'[^a-zA-Z0-9\-]+', '_',
-                               self.title.lower()).strip('_')

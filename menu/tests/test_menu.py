@@ -8,7 +8,6 @@ from django.test.client import RequestFactory
 from menu import Menu, MenuItem
 
 # XXX TODO: test MENU_HIDE_EMPTY
-# XXX TODO: test check_children
 
 class MenuTests(TestCase):
     """
@@ -52,7 +51,7 @@ class MenuTests(TestCase):
             ]
 
         kids3 = (
-            MenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1),
+            MenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1, slug="salty"),
             MenuItem(kids3_2_title, "/parent3/kids3-2")
         )
 
@@ -67,6 +66,15 @@ class MenuTests(TestCase):
         Menu.add_item("test", MenuItem("Parent 3", "/parent3", children=kids3))
 
         self.factory = RequestFactory()
+
+    def test_slug(self):
+        """
+        Ensure our slugification works as expected
+        """
+        request = self.factory.get('/parent3/kids3-1')
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[1].slug, "parent-3")
+        self.assertEqual(items[1].children[0].slug, "salty")
 
     def test_exact_url(self):
         """
