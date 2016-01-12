@@ -1,4 +1,12 @@
+import signal
+import threading
 import unittest
+import sys
+
+if sys.version_info > (3, 0):
+    from queue import Queue
+else:
+    from Queue import Queue
 
 from django.conf import settings
 from django.template import Template, Context
@@ -67,6 +75,42 @@ class MenuTests(TestCase):
 
         self.factory = RequestFactory()
 
+    def test_thread_safety_and_checks(self):
+        """
+        Ensure our thread safety works, this also ensures our checks work
+        """
+        # this shouldn't ever take more than 5 seconds, add a safety in case someting breaks
+        signal.alarm(5)
+
+        def t1(results):
+            "Closure for thread 1"
+            request = self.factory.get('/kids2-2/visible')
+            items = Menu.process(request, 'test')
+            results.put_nowait(len(items[0].children) == 2)
+
+        def t2(results):
+            "Closure for thread 2"
+            request = self.factory.get('/kids2-2/hidden')
+            items = Menu.process(request, 'test')
+            results.put_nowait(len(items[0].children) == 1)
+
+        results = Queue()
+        for _ in range(50):
+            threads = [
+                threading.Thread(target=t1, args=(results,)),
+                threading.Thread(target=t2, args=(results,))
+            ]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join()
+
+
+        self.assertTrue(all([
+            results.get()
+            for _ in range(100)
+        ]))
+
     def test_slug(self):
         """
         Ensure our slugification works as expected
@@ -98,18 +142,6 @@ class MenuTests(TestCase):
         request = self.factory.get('/parent3')
         items = Menu.process(request, 'test')
         self.assertEqual(items[1].children[1].title, "/parent3-fun")
-
-    def test_checks(self):
-        """
-        Ensure checks on menus work
-        """
-        request = self.factory.get('/kids2-2/visible')
-        items = Menu.process(request, 'test')
-        self.assertEqual(len(items[0].children), 2)
-
-        request = self.factory.get('/kids2-2/hidden')
-        items = Menu.process(request, 'test')
-        self.assertEqual(len(items[0].children), 1)
 
     def test_select_parents(self):
         """
