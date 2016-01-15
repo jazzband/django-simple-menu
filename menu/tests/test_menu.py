@@ -17,6 +17,18 @@ from menu import Menu, MenuItem
 
 # XXX TODO: test MENU_HIDE_EMPTY
 
+
+class CustomMenuItem(MenuItem):
+    """
+    Custom MenuItem subclass with custom check logic
+    """
+    def check(self, request):
+        """
+        We should be visible unless the request path ends with "foo"
+        """
+        self.visible = not request.path.endswith("foo")
+
+
 class MenuTests(TestCase):
     """
     Tests for Menu
@@ -59,8 +71,8 @@ class MenuTests(TestCase):
             ]
 
         kids3 = (
-            MenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1, slug="salty"),
-            MenuItem(kids3_2_title, "/parent3/kids3-2")
+            CustomMenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1, slug="salty"),
+            CustomMenuItem(kids3_2_title, "/parent3/kids3-2")
         )
 
         Menu.items = {}
@@ -74,6 +86,18 @@ class MenuTests(TestCase):
         Menu.add_item("test", MenuItem("Parent 3", "/parent3", children=kids3))
 
         self.factory = RequestFactory()
+
+    def test_custom_menuitem(self):
+        """
+        Ensure our custom check on our custom MenuItem works
+        """
+        request = self.factory.get('/parent3/kids3-1')
+        items = Menu.process(request, 'test')
+        self.assertEqual(len(items[1].children), 2)
+
+        request = self.factory.get('/parent3/kids3-1/foo')
+        items = Menu.process(request, 'test')
+        self.assertEqual(len(items[1].children), 0)
 
     def test_thread_safety_and_checks(self):
         """

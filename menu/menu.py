@@ -145,8 +145,7 @@ class Menu(object):
 
 class MenuItem(object):
     """
-    MenuItem represents an item in a menu, possibly one that has a sub-
-    menu (children).
+    MenuItem represents an item in a menu, possibly one that has a sub-menu (children).
     """
 
     def __init__(self, title, url, children=[], weight=1, check=None,
@@ -176,7 +175,7 @@ class MenuItem(object):
         self.visible = visible
         self.children = children
         self.weight = weight
-        self.check = check
+        self.check_func = check
         self.slug = slug
         self.exact_url = exact_url
         self.selected = False
@@ -186,15 +185,19 @@ class MenuItem(object):
         for k in kwargs:
             setattr(self, k, kwargs[k])
 
+    def check(self, request):
+        """
+        Evaluate if we should be visible for this request
+        """
+        if callable(self.check_func):
+            self.visible = self.check_func(request)
+
     def process(self, request):
         """
         process determines if this item should visible, if its selected, etc...
         """
-        # evaluate our check
-        if callable(self.check):
-            self.visible = self.check(request)
-
         # if we're not visible we return since we don't need to do anymore processing
+        self.check(request)
         if not self.visible:
             return
 
