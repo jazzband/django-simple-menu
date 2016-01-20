@@ -9,6 +9,12 @@ access from within your templates. This way you can have a menu for your main
 navigation, another menu for logged in users, another menu for anonymous users,
 etc.
 
+.. note::
+
+    Since we use the ``menu`` namespace you will get ``ImportError`` if you
+    have any files named ``menu.py``, ensure you use a plural version:
+    ``menus.py``
+
 To define your menus you need to create a file named ``menus.py`` inside of the
 app that you wish to hook menus up to. In the ``menus.py`` file you should
 import the ``Menu`` and ``MenuItem`` classes from the ``menu`` package::
@@ -116,5 +122,58 @@ You can use it like::
 
     {% with menu=menus.main %}{% include "bootstrap-navbar.html" %}{% endwith %}
 
-.. _menu __init__.py source file: https://github.com/fatbox/django-simple-menu/blob/master/menu/__init__.py
+
+Check generalizations
+---------------------
+
+If your application is dynamic enough, or complex enough, you may find that you
+want to generalize your check logic based on a permissions model, or something
+similar.  To accomplish this you can create your own custom ``MenuItem``
+implementation with a ``check`` method.
+
+This assumes you have a ``utils`` package.
+
+``utils/menus.py``::
+
+    from django.core.urlresolvers import resolve
+
+    from menu import MenuItem
+
+
+    class ViewMenuItem(MenuItem):
+        """Custom MenuItem that checks permissions based on the view associated
+        with a URL"""
+
+        def check(self, request):
+             """Check permissions based on our view"""
+             is_visible = True
+             match = resolve(self.url)
+
+             # do something with match, and possibly change is_visible...
+
+             self.visible = is_visible
+
+
+``reports/menus.py``::
+
+     from utils.menus import ViewMenuItem
+
+     from menu import Menu, MenuItem
+
+     from django.core.urlresolvers import reverse
+
+     # Since we use ViewMenuItem here we do not need to define checks, instead
+     # the check logic will change their visibility based on the permissions
+     # attached to the views we reverse here.
+     reports_children = (
+          ViewMenuItem("Staff Only", reverse("reports.views.staff")),
+          ViewMenuItem("Superuser Only", reverse("reports.views.superuser"))
+     )
+
+     Menu.add_item("main", MenuItem("Reports Index",
+                                    reverse("reports.views.index"),
+                                    children=reports_children))
+
+
+.. _menu __init__.py source file: https://github.com/borgstrom/django-simple-menu/blob/master/menu/__init__.py
 .. _Twitter Bootstrap Navbar Component: http://twitter.github.com/bootstrap/components.html#navbar

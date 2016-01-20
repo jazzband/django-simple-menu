@@ -32,11 +32,12 @@ Please ensure that you have ``django.core.context_processors.request`` listed in
 ``TEMPLATE_CONTEXT_PROCESSORS`` setting.
 
 For each of your own apps that you want to expose a menu create a new file named ``menus.py`` and
-define your menus using the ``Menu`` and ``MenuItem`` classes.
+define your menus using the ``Menu`` and ``MenuItem`` classes you can import from the ``menu``
+namespace.
 
-In a template you want to render a menu first ``{% load menu %}`` then inside a block call
-``{% generate_menu %}`` and a new varaible named ``menus`` will be added to the context.  You can
-now iterate over this ``menus`` object to render your menus.
+In a template you want to render a menu first ``{% load menu %}`` then call ``{% generate_menu %}``
+inside a block and a new varaible named ``menus`` will be added to the context.  You can now iterate
+over this ``menus`` object to render your menus.
 
 To quickly see everything in action and evaluate django-simple-menut please check out the
 `example project`_.

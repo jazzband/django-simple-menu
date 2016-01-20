@@ -1,6 +1,11 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.2.0 - Released January 15, 2016
+- Require Django 1.6+ now (this is because we now use slugify instead of a regex)
+- Ensure thread safety #42
+- Allow complex checks to be built by subclassing MenuItem #43
+
 Version 1.1.2 - Released November 21, 2015
 - Fix bug introduced in 1.1.1 surrounding child sorting #38
 - Improve tests
