@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 1.2.1 - Released May 1st, 2016
+- Fixing sdist packaging
+
 Version 1.2.0 - Released January 15, 2016
 - Require Django 1.6+ now (this is because we now use slugify instead of a regex)
 - Ensure thread safety #42
