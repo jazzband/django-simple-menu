@@ -11,9 +11,9 @@ Simple Django Menus
            :target: https://pypi.python.org/pypi/django-simple-menu
            :alt: Latest PyPI version
 
-.. image:: https://img.shields.io/pypi/dm/django-simple-menu.svg
-           :target: https://pypi.python.org/pypi/django-simple-menu
-           :alt: Number of PyPI downloads
+.. image:: https://jazzband.co/static/img/badge.svg
+           :target: https://jazzband.co/
+           :alt: Jazzband
 
 django-simple-menu is an entirely code based menu system, because, who really wants to define their
 menus in the django admin...
