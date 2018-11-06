@@ -16,7 +16,11 @@ the dependencies listed in the requirements file::
 
 Next setup the Django instance::
 
-    ./manage.py syncdb
+    ./manage.py migrate 
+
+Create testing admin user::
+
+    ./manage.py createsuperuser
 
 And finally run the project::
 
