@@ -1,8 +1,8 @@
 import copy
 import re
-import sys
 
 from django.conf import settings
+from django.utils.six import text_type
 from django.utils.text import slugify
 
 try:
@@ -206,13 +206,7 @@ class MenuItem(object):
             self.title = self.title(request)
 
         # if no title is set turn it into a slug
-        if self.slug is None:
-            # in python3 we don't need to convert to unicode, in python2 slugify
-            # requires a unicode string
-            if sys.version_info > (3, 0):
-                self.slug = slugify(self.title)
-            else:
-                self.slug = slugify(unicode(self.title))
+        self.slug = self.slug or slugify(text_type(self.title))
 
         # evaluate children
         if callable(self.children):
