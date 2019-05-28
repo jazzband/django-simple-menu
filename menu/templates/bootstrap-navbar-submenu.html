@@ -1,14 +1,13 @@
-<ul class="dropdown-menu">
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
     {% for item in items %}
         {% if item.visible %}
-            <li class="{% if item.selected %} active{% endif %}{% if item.children %} dropdown-submenu{% endif %}">
-                <a href="{{ item.url }}">{{ item.title }}</a>
+            <a class="dropdown-item {% if item.selected %} active{% endif %}{% if item.children %} dropdown-submenu{% endif %}" href="{{ item.url }}">{{ item.title }}
                 {% if item.children %}
                     {% with items=item.children template_name='bootstrap-navbar-submenu.html' %}
                        {% include template_name %}
                     {% endwith %}
                 {% endif %}
-            </li>
+            </a>
         {% endif %}
     {% endfor %}
-</ul>
+</div>
