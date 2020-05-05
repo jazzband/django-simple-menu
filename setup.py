@@ -25,7 +25,7 @@ setup(name='django-simple-menu',
       long_description=open('README.rst').read(),
       author='Evan Borgstrom',
       author_email='evan@borgstrom.ca',
-      url='https://github.com/borgstrom/django-simple-menu',
+      url='https://github.com/jazzband/django-simple-menu',
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Framework :: Django',
