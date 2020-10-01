@@ -15,7 +15,7 @@ Simple Django Menus
            :target: https://jazzband.co/
            :alt: Jazzband
 
-django-simple-menu is an entirely code based menu system, because, who really wants to define their
+django-simple-menu is an entirely code based menu system, because who really wants to define their
 menus in the django admin...
 
 It's simple to use, yet provides enough flexibility to provide unlimited children menus, per-request
@@ -39,7 +39,7 @@ In a template you want to render a menu first ``{% load menu %}`` then call ``{%
 inside a block and a new varaible named ``menus`` will be added to the context.  You can now iterate
 over this ``menus`` object to render your menus.
 
-To quickly see everything in action and evaluate django-simple-menut please check out the
+To quickly see everything in action and evaluate django-simple-menu please check out the
 `example project`_.
 
 .. _example project: https://github.com/borgstrom/django-simple-menu/tree/master/example
