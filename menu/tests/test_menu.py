@@ -54,7 +54,7 @@ class MenuTests(TestCase):
         # Ensure we can pass children as tuples (or other iterables, like generators)
         # Following the implementation of sorted children there was a bug reported due to children
         # being passed as a tuple, which has no .sort method
-        # See: https://github.com/borgstrom/django-simple-menu/issues/38
+        # See: https://github.com/jazzband/django-simple-menu/issues/38
         def kids2():
             "Generator for kids2"
             class RepeatIterator(object):

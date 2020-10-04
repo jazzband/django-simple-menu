@@ -175,5 +175,5 @@ This assumes you have a ``utils`` package.
                                     children=reports_children))
 
 
-.. _menu __init__.py source file: https://github.com/borgstrom/django-simple-menu/blob/master/menu/__init__.py
+.. _menu __init__.py source file: https://github.com/jazzband/django-simple-menu/blob/master/menu/__init__.py
 .. _Twitter Bootstrap Navbar Component: http://twitter.github.com/bootstrap/components.html#navbar
