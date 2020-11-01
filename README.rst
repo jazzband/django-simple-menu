@@ -37,7 +37,7 @@ define your menus using the ``Menu`` and ``MenuItem`` classes you can import fro
 namespace.
 
 In a template you want to render a menu first ``{% load menu %}`` then call ``{% generate_menu %}``
-inside a block and a new varaible named ``menus`` will be added to the context.  You can now iterate
+inside a block and a new variable named ``menus`` will be added to the context.  You can now iterate
 over this ``menus`` object to render your menus.
 
 To quickly see everything in action and evaluate django-simple-menu please check out the
