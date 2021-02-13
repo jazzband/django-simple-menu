@@ -154,7 +154,7 @@ class MenuItem(object):
         MenuItem constructor
 
         title       either a string or a callable to be used for the title
-        url         the url of the item
+        url         the url of the item or a callable to be used for the url
         children    an array of MenuItems that are sub menus to this item
                     this can also be a callable that generates an array
         weight      used to sort adjacent MenuItems
@@ -201,6 +201,10 @@ class MenuItem(object):
         if not self.visible:
             return
 
+        # evaluate our url
+        if callable(self.url):
+            self.url = self.url(request)
+        
         # evaluate our title
         if callable(self.title):
             self.title = self.title(request)
