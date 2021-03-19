@@ -1,17 +1,12 @@
 import copy
 import re
-import sys
 
+from django.apps import apps
 from django.conf import settings
 from django.utils.text import slugify
 
-try:
-    from django.apps import apps
-except ImportError:
-    apps = False
 
-
-class Menu(object):
+class Menu:
     """
     Menu is a class that generates menus
 
@@ -56,12 +51,10 @@ class Menu(object):
             return
 
         # Fetch all installed app names
-        app_names = settings.INSTALLED_APPS
-        if apps:
-            app_names = [
-                app_config.name
-                for app_config in apps.get_app_configs()
-            ]
+        app_names = [
+            app_config.name
+            for app_config in apps.get_app_configs()
+        ]
 
         # loop through our INSTALLED_APPS
         for app in app_names:
@@ -143,7 +136,7 @@ class Menu(object):
         return visible
 
 
-class MenuItem(object):
+class MenuItem:
     """
     MenuItem represents an item in a menu, possibly one that has a sub-menu (children).
     """
@@ -209,10 +202,7 @@ class MenuItem(object):
         if self.slug is None:
             # in python3 we don't need to convert to unicode, in python2 slugify
             # requires a unicode string
-            if sys.version_info > (3, 0):
-                self.slug = slugify(self.title)
-            else:
-                self.slug = slugify(unicode(self.title))
+            self.slug = slugify(self.title)
 
         # evaluate children
         if callable(self.children):

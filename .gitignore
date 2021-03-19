@@ -9,3 +9,7 @@ docs/_build/
 
 # example db
 example/example.sqlite3
+
+coverage.xml
+.coverage
+.tox

@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.0.0 - Released ...
+- Dropped support for Django < 2.2
+- Dropped support for Python < 3.6
+
 Version 1.2.1 - Released May 1st, 2016
 - Fixing sdist packaging
 

@@ -1,12 +1,6 @@
 import signal
 import threading
-import unittest
-import sys
-
-if sys.version_info > (3, 0):
-    from queue import Queue
-else:
-    from Queue import Queue
+from queue import Queue
 
 from django.conf import settings
 from django.template import Template, Context
@@ -57,7 +51,7 @@ class MenuTests(TestCase):
         # See: https://github.com/borgstrom/django-simple-menu/issues/38
         def kids2():
             "Generator for kids2"
-            class RepeatIterator(object):
+            class RepeatIterator:
                 "We need this to be reusable -- http://stackoverflow.com/a/1985733"
                 def __iter__(self):
                     yield MenuItem("kids2-1", "/parent2/kids2-1", weight=999)
