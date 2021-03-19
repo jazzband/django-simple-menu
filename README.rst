@@ -57,4 +57,5 @@ https://django-simple-menu.readthedocs.org
 Requirements
 ------------
 
-Django 1.6+
+Django 2.2+
+Python 3.6+
