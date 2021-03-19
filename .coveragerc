@@ -3,4 +3,4 @@ source = menu
 branch = 1
 
 [report]
-omit = *tests*,*migrations*,.tox/*,setup.py,*settings.py
+omit = *migrations*,.tox/*,setup.py,*settings.py
