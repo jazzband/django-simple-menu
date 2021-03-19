@@ -7,4 +7,4 @@ except DistributionNotFound:
     # package is not installed
     __version__ = None
 
-__url__ = 'https://github.com/borgstrom/django-simple-menu'
+__url__ = 'https://github.com/jazzband/django-simple-menu'
