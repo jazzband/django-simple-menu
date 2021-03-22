@@ -1,11 +1,12 @@
 Simple Django Menus
 ===================
 
-.. image:: https://img.shields.io/travis/borgstrom/django-simple-menu.svg
-           :target: https://travis-ci.org/borgstrom/django-simple-menu
+.. image:: https://github.com/jazzband/django-simple-menu/workflows/Test/badge.svg
+   :target: https://github.com/jazzband/django-simple-menu/actions
+   :alt: GitHub Actions
 
-.. image:: https://img.shields.io/codecov/c/github/borgstrom/django-simple-menu.svg
-           :target: https://codecov.io/github/borgstrom/django-simple-menu
+.. image:: https://img.shields.io/codecov/c/github/jazzband/django-simple-menu.svg
+           :target: https://codecov.io/github/jazzband/django-simple-menu
 
 .. image:: https://img.shields.io/pypi/v/django-simple-menu.svg
            :target: https://pypi.python.org/pypi/django-simple-menu
@@ -42,7 +43,7 @@ over this ``menus`` object to render your menus.
 To quickly see everything in action and evaluate django-simple-menut please check out the
 `example project`_.
 
-.. _example project: https://github.com/borgstrom/django-simple-menu/tree/master/example
+.. _example project: https://github.com/jazzband/django-simple-menu/tree/master/example
 
 
 Documentation
@@ -56,4 +57,5 @@ https://django-simple-menu.readthedocs.org
 Requirements
 ------------
 
-Django 1.6+
+Django 2.2+
+Python 3.6+
