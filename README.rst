@@ -29,8 +29,8 @@ Quickstart
 Using django-simple-menu is easy.
 
 Install ``django-simple-menu`` in your virtualenv and then add ``menu`` to your ``INSTALLED_APPS``.
-Please ensure that you have ``django.core.context_processors.request`` listed in the
-``TEMPLATE_CONTEXT_PROCESSORS`` setting.
+Please ensure that you have ``django.template.context_processors.request`` listed in the
+``TEMPLATES[...]["OPTIONS"]["context_processors"]`` setting.
 
 For each of your own apps that you want to expose a menu create a new file named ``menus.py`` and
 define your menus using the ``Menu`` and ``MenuItem`` classes you can import from the ``menu``
