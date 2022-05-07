@@ -1,61 +1,84 @@
-Simple Django Menus
-===================
+===================================
+django-simple-menu |latest-version|
+===================================
 
-.. image:: https://github.com/jazzband/django-simple-menu/workflows/Test/badge.svg
+|jazzband| |build-status| |coverage| |docs| |python-support| |django-support|
+
+.. |latest-version| image:: https://img.shields.io/pypi/v/django-simple-menu.svg
+   :target: https://pypi.python.org/pypi/django-simple-menu
+   :alt: Latest version on PyPI
+
+.. |jazzband| image:: https://jazzband.co/static/img/badge.svg
+   :target: https://jazzband.co/
+   :alt: Jazzband
+
+.. |build-status| image:: https://github.com/jazzband/django-simple-menu/actions/workflows/test.yml/badge.svg
    :target: https://github.com/jazzband/django-simple-menu/actions
-   :alt: GitHub Actions
+   :alt: Build Status
 
-.. image:: https://img.shields.io/codecov/c/github/jazzband/django-simple-menu.svg
-           :target: https://codecov.io/github/jazzband/django-simple-menu
+.. |coverage| image:: https://img.shields.io/codecov/c/github/jazzband/django-simple-menu.svg
+   :target: https://codecov.io/github/jazzband/django-simple-menu
+   :alt: Test coverage status
 
-.. image:: https://img.shields.io/pypi/v/django-simple-menu.svg
-           :target: https://pypi.python.org/pypi/django-simple-menu
-           :alt: Latest PyPI version
+.. |docs| image:: https://img.shields.io/readthedocs/django-simple-menu/latest.svg
+   :target: https://django-simple-menu.readthedocs.io/
+   :alt: Documentation status
 
-.. image:: https://jazzband.co/static/img/badge.svg
-           :target: https://jazzband.co/
-           :alt: Jazzband
+.. |python-support| image:: https://img.shields.io/pypi/pyversions/django-simple-menu
+   :target: https://pypi.python.org/pypi/django-simple-menu
+   :alt: Supported Python versions
 
-django-simple-menu is an entirely code based menu system, because, who really wants to define their
-menus in the django admin...
+.. |django-support| image:: https://img.shields.io/pypi/djversions/django-simple-menu
+   :target: https://pypi.org/project/django-simple-menu
+   :alt: Supported Django versions
 
-It's simple to use, yet provides enough flexibility to provide unlimited children menus, per-request
-generation and checking of menu items, badges, and more.
+``django-simple-menu`` is an entirely code based menu system, because, who
+really wants to define their menus inside Django Admin?..
+
+It's simple to use, yet provides enough flexibility to provide unlimited
+children menus, per-request generation and checking of menu items, badges,
+and more.
 
 
 Quickstart
 ----------
 
-Using django-simple-menu is easy.
+**Requirements:** Python 3.6+, Django 2.2+
 
-Install ``django-simple-menu`` in your virtualenv and then add ``menu`` to your ``INSTALLED_APPS``.
-Please ensure that you have ``django.template.context_processors.request`` listed in the
-``TEMPLATES[...]["OPTIONS"]["context_processors"]`` setting.
+1. Install the ``django-simple-menu`` package.
 
-For each of your own apps that you want to expose a menu create a new file named ``menus.py`` and
-define your menus using the ``Menu`` and ``MenuItem`` classes you can import from the ``menu``
-namespace.
+2. Add ``menu`` to your ``INSTALLED_APPS``.
 
-In a template you want to render a menu first ``{% load menu %}`` then call ``{% generate_menu %}``
-inside a block and a new variable named ``menus`` will be added to the context.  You can now iterate
-over this ``menus`` object to render your menus.
+   - please ensure that you have ``django.template.context_processors.request``
+     listed under ``TEMPLATES[...]["OPTIONS"]["context_processors"]``.
 
-To quickly see everything in action and evaluate django-simple-menu please check out the
+3. Create ``menus.py`` inside each app you want to create a menu for and define
+   said menus using the ``Menu`` and ``MenuItem`` classes you can import from
+   the ``menu`` namespace.
+
+4. In your templates, load the template tags (``{% load menu %}``) and call
+   ``{% generate_menu %}`` inside a block. Your context will be populated with
+   a new object named ``menus``.  You can now iterate over it to render your
+   menus.
+
+To quickly see ``django-simple-menu`` in action, check out the
 `example project`_.
 
 .. _example project: https://github.com/jazzband/django-simple-menu/tree/master/example
 
 
-Documentation
--------------
+More
+----
 
-The full documentation is located in the docs directory and can be viewed at:
+Full documentation, including installation and configuration instructions, is
+available at https://django-simple-menu.readthedocs.io/.
 
-https://django-simple-menu.readthedocs.org
+``django-simple-menu`` is released under the *BSD 2-Clause "Simplified" License*.
+If you like it, please consider contributing!
 
+``django-simple-menu`` was originally created by
+Evan Borgstom <evan@borgstrom.ca> and was further developed by many
+contributors_.
 
-Requirements
-------------
+.. _contributors: https://github.com/jazzband/django-simple-menu/graphs/contributors
 
-Django 2.2+
-Python 3.6+
