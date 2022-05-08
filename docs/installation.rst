@@ -12,5 +12,3 @@ Installing django-simple-menu
    means that you need to ensure that your ``TEMPLATE_CONTEXT_PROCESSORS``
    setting includes ``django.core.context_processors.request``, which it
    doesn't by default.
-
-

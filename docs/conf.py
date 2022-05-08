@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # django-simple-menu documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb 21 16:24:33 2013.
@@ -42,8 +41,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'django-simple-menu'
-copyright = u'2014, Evan Borgstrom'
+project = 'django-simple-menu'
+copyright = '2014, Evan Borgstrom'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -185,8 +184,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'django-simple-menu.tex', u'django-simple-menu Documentation',
-   u'Evan Borgstrom', 'manual'),
+  ('index', 'django-simple-menu.tex', 'django-simple-menu Documentation',
+   'Evan Borgstrom', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -215,8 +214,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'django-simple-menu', u'django-simple-menu Documentation',
-     [u'Evan Borgstrom'], 1)
+    ('index', 'django-simple-menu', 'django-simple-menu Documentation',
+     ['Evan Borgstrom'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -229,8 +228,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'django-simple-menu', u'django-simple-menu Documentation',
-   u'Evan Borgstrom', 'django-simple-menu', 'One line description of project.',
+  ('index', 'django-simple-menu', 'django-simple-menu Documentation',
+   'Evan Borgstrom', 'django-simple-menu', 'One line description of project.',
    'Miscellaneous'),
 ]
 
