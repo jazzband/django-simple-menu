@@ -245,7 +245,7 @@ class MenuItem:
         """
         matched = False
         if self.exact_url:
-            if re.match("%s$" % (self.url,), request.path):
+            if re.match(f"{self.url}$", request.path):
                 matched = True
         elif re.match("%s" % self.url, request.path):
             matched = True

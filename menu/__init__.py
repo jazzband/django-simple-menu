@@ -1,5 +1,5 @@
 from pkg_resources import get_distribution, DistributionNotFound
-from .menu import Menu, MenuItem  # noqa
+from .menu import Menu, MenuItem
 
 try:
     __version__ = get_distribution("django-simple-menu").version

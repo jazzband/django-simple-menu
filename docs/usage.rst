@@ -44,7 +44,7 @@ available in your templates. For example adding ``separator=True`` could be
 used to add separators to menus ``{% if item.separator %}<li
 class="divider"></li>{% endif %}``
 
-For the full list of ``MenuItem`` options see the `menu __init__.py source file`_. 
+For the full list of ``MenuItem`` options see the `menu __init__.py source file`_.
 
 Usage Example
 -------------
@@ -93,7 +93,7 @@ templates. This is done through the ``generate_menu`` template tag::
 
     {% extends "base.html" %}
     {% load menu %}
-    
+
     {% block content %}
     {% generate_menu %}
     ...
@@ -102,7 +102,7 @@ templates. This is done through the ``generate_menu`` template tag::
 Note that ``generate_menu`` must be called inside of a block.
 
 Once you call ``generate_menu`` all of your MenuItems will be evaluated and
-the following items will be set in the context for you. 
+the following items will be set in the context for you.
 
 #. ``menus`` - This is an object that contains all of the lists of menus as
    attribute names::
