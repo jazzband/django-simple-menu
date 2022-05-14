@@ -43,7 +43,7 @@ and more.
 Quickstart
 ----------
 
-**Requirements:** Python 3.6+, Django 2.2+
+**Requirements:** Python 3.6+, Django 3.2+
 
 1. Install the ``django-simple-menu`` package.
 
