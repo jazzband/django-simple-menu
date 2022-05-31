@@ -1,3 +1,0 @@
-Django
-django-simple-menu
-pysqlite>=2.6.0
