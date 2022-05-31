@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Your profile | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="py-5">
+        <div class="container">
+            <h1>{{ request.user.get_full_name|default:"" }}
+                (@{{ request.user.username }})</h1>
+            <p>
+                <strong>E-Mail:</strong> {{ request.user.email }}
+            </p>
+        </div>
+    </main>
+{% endblock %}

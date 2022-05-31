@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Sign in | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="p-4">
+        <div class="container w-25 mx-auto">
+            <form action="{% url 'accounts:sign_in' %}" method="post">
+                {% csrf_token %}
+                <h1>Sign in</h1>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username"
+                           name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control"
+                           id="password" name="password">
+                </div>
+
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Sign in
+                </button>
+            </form>
+        </div>
+    </main>
+{% endblock %}
