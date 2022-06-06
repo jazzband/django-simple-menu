@@ -1,5 +1,5 @@
 [run]
-source = menu
+source = simple_menu
 branch = 1
 
 [report]
