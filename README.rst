@@ -47,18 +47,18 @@ Quickstart
 
 1. Install the ``django-simple-menu`` package.
 
-2. Add ``menu`` to your ``INSTALLED_APPS``.
+2. Add ``simple_menu`` to your ``INSTALLED_APPS``.
 
    - please ensure that you have ``django.template.context_processors.request``
      listed under ``TEMPLATES[...]["OPTIONS"]["context_processors"]``.
 
 3. Create ``menus.py`` inside each app you want to create a menu for and define
    said menus using the ``Menu`` and ``MenuItem`` classes you can import from
-   the ``menu`` namespace.
+   the ``simple_menu`` package.
 
-4. In your templates, load the template tags (``{% load menu %}``) and call
-   ``{% generate_menu %}`` inside a block. Your context will be populated with
-   a new object named ``menus``.  You can now iterate over it to render your
+4. In your templates, load the template tags (``{% load simple_menu %}``) and
+   call ``{% generate_menu %}`` inside a block. Your context will be populated
+   with a new object named ``menus``. You can now iterate over it to render your
    menus.
 
 To quickly see ``django-simple-menu`` in action, check out the
