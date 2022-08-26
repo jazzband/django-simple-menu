@@ -1,5 +1,4 @@
 {% load simple_menu %}
-{% generate_menu %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +25,8 @@
         <div class="container">
             <a class="navbar-brand" href="{% url 'accounts:index' %}">dsm
                 example app</a>
-            {% with menu=menus.user navbar_class="ms-auto" %}
-                {% include 'menu.html' %}
-            {% endwith %}
-
+            {% generate_menu %}
+            {% include 'menu.html' with menu=menus.user navbar_class="ms-auto" %}
         </div>
     </nav>
 </header>
