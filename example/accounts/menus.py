@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from menu import Menu, MenuItem
+from simple_menu import Menu, MenuItem
 
 
 def profile_title(request):
