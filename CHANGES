@@ -5,6 +5,8 @@ upcoming: Version 2.0.0
 - BREAKING: dropped support for Python < 3.6
 - BREAKING: dropped support for Django < 3.2
 - DEPRECATION: the module is now called "simple_menu" instead of "menu" (#93)
+  - BREAKING: when using "simple_menu", the Bootstrap templates are located
+              inside the "simple_menu" subfolder
 - Moved CI to GitHub Actions (#67, #72)
 - Project is now a part of Jazzband (#54)
 
