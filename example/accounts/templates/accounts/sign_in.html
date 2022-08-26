@@ -6,7 +6,7 @@
 
 {% block body %}
     <main class="p-4">
-        <div class="container w-25 mx-auto">
+        <section class="container w-25 mx-auto mb-5">
             <form action="{% url 'accounts:sign_in' %}" method="post">
                 {% csrf_token %}
                 <h1>Sign in</h1>
@@ -26,6 +26,14 @@
                     Sign in
                 </button>
             </form>
-        </div>
+        </section>
+        <section class="container content">
+            The menu item for this page is being shown to everyone,
+            who is not authenticated:
+            <pre><code>Menu.add_item("user", MenuItem("Sign in",
+                               reverse('accounts:sign_in'),
+                               icon='box-arrow-in-right',
+                               <mark>check=lambda r: not r.user.is_authenticated</mark>))</code></pre>
+        </section>
     </main>
 {% endblock %}
