@@ -1,9 +1,10 @@
-from pkg_resources import get_distribution, DistributionNotFound
+from importlib_metadata import PackageNotFoundError, version
+
 from .menu import Menu, MenuItem
 
 try:
-    __version__ = get_distribution("django-simple-menu").version
-except DistributionNotFound:
+    __version__ = version("django-simple-menu")
+except PackageNotFoundError:
     # package is not installed
     __version__ = None
 
