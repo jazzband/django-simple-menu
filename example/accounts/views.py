@@ -24,3 +24,6 @@ class ProfileView(TemplateView):
 
 class SuperOnlyView(TemplateView):
     template_name = 'accounts/super_only.html'
+
+class SubPageView(TemplateView):
+    template_name = 'accounts/subpage.html'

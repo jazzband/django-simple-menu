@@ -13,6 +13,17 @@ def profile_title(request):
     return f"{name}'s Profile"
 
 
+submenu_items = [
+    MenuItem(f"Page {i}",
+             reverse('accounts:subpage', kwargs={'i': i}),
+             icon=f'{i}-circle')
+    for i in range(1, 4)
+]
+Menu.add_item("user", MenuItem("Subpages",
+                               reverse('accounts:subpage', kwargs={'i': 1}),
+                               icon="menu-app",
+                               children=submenu_items))
+
 # this item will be shown to users who are not logged in
 Menu.add_item("user", MenuItem("Sign in",
                                reverse('accounts:sign_in'),

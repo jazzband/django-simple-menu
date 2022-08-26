@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Subpage | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="py-5">
+        <section class="container">
+            <h1>This is a subpage</h1>
+        </section>
+        <section class="container content">
+            <p>
+                There are three identical pages that are nested inside their
+                parent menu item:
+            </p>
+            <pre><code>submenu_items = [...]
+Menu.add_item("user", MenuItem("Subpages",
+                               reverse('accounts:subpage', kwargs={'i': 1}),
+                               icon="menu-app",
+                               <mark>children=submenu_items</mark>))</code></pre>
+            <p>
+                Note that the second navigation bar is only shown for the pages
+                that have a submenu. You can check it in the template:
+            </p>
+            <pre><code>&lbrace;% <mark>if has_submenu</mark>
+    &lt;!-- display submenu --&gt;
+&lbrace;% endif %}</code></pre>
+
+            <p>
+                By default, the parent will not be marked active if their child
+                active. The example site changes this behavior using a setting:
+            </p>
+            <pre><code>MENU_SELECT_PARENTS = True</code></pre>
+        </section>
+    </main>
+{% endblock %}

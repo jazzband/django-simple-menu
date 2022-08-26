@@ -21,7 +21,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{% url 'accounts:index' %}">dsm
                 example app</a>
@@ -29,6 +29,14 @@
             {% include 'menu.html' with menu=menus.user navbar_class="ms-auto" %}
         </div>
     </nav>
+    {% if has_submenu %}
+        <nav class="navbar navbar-expand navbar-light bg-light"
+             style="height:2.75rem">
+            <div class="container">
+                {% include 'menu.html' with menu=submenu %}
+            </div>
+        </nav>
+    {% endif %}
 </header>
 {% block body %}{% endblock body %}
 </body>
