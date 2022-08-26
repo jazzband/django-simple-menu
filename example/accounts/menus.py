@@ -37,10 +37,3 @@ Menu.add_item("user", MenuItem("Sign out",
                                reverse('accounts:sign_out'),
                                icon='box-arrow-right',
                                check=lambda r: r.user.is_authenticated))
-
-Menu.add_item("main", MenuItem("GitHub",
-                               "https://github.com/jazzband/django-simple-menu",
-                               icon="github"))
-Menu.add_item("main", MenuItem("Docs",
-                               "https://django-simple-menu.readthedocs.io/",
-                               icon="journal-code"))

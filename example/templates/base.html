@@ -26,9 +26,6 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'accounts:index' %}">dsm
                 example app</a>
-            {% with menu=menus.main %}
-                {% include 'menu.html' %}
-            {% endwith %}
             {% with menu=menus.user navbar_class="ms-auto" %}
                 {% include 'menu.html' %}
             {% endwith %}
