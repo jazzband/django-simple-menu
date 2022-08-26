@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Your profile | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="py-5">
+        <section class="container">
+            <h1>{{ request.user.get_full_name|default:"" }}
+                (@{{ request.user.username }})</h1>
+            <p>
+                <strong>E-Mail:</strong> {{ request.user.email }}
+            </p>
+        </section>
+        <section class="container content">
+            <p>
+                The menu item for this page is being shown to everyone,
+                who is authenticated:
+            </p>
+            <pre><code>Menu.add_item("user", MenuItem(profile_title,
+                               reverse('accounts:profile'),
+                               icon='person-circle',
+                               <mark>check=lambda r: r.user.is_authenticated</mark>))</code></pre>
+            <p>
+                Also take a look at the <code>profile_title</code>. It's not a string,
+                but a callable, which accepts the request object. In our case,
+                it renders the user's name on the button:
+            </p>
+            <pre><code>def profile_title(request):
+    name = request.user.get_full_name() or request.user
+    return f"{name}'s Profile"</code></pre>
+        </section>
+    </main>
+{% endblock %}

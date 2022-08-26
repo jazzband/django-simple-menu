@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Secret page | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="py-5">
+        <section class="container">
+            <h1>Shhh!.. This is a secret page</h1>
+        </section>
+        <section class="container content">
+            <p>
+            The menu item for this page is being shown only to superusers:
+            </p>
+            <pre><code>Menu.add_item("user", MenuItem("Secret superuser page",
+                               reverse("accounts:super_only"),
+                               icon='incognito',
+                               <mark>check=lambda r: r.user.is_superuser</mark>))</code></pre>
+        </section>
+    </main>
+{% endblock %}

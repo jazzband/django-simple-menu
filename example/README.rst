@@ -1,30 +1,61 @@
-Example Project for django-simple-menu
-======================================
+==============================
+django-simple-menu example app
+==============================
 
-This is a complete example project for django-simple-menu that can be quickly
-used to evaluate if django-simple-menu is right for you.
+Set up
+------
 
-Setting up
+1. Create a virtualenv, source it, and install dependencies::
+
+       python3 -m venv .venv
+       source .venv/bin/activate
+       pip install -r requirements.txt
+
+2. Initialize a database and create test users::
+
+       python3 manage.py makemigrations
+       python3 manage.py migrate
+       python3 manage.py createsuperuser --username admin
+       python3 manage.py createsuperuser --username user
+
+3. Run server::
+
+       python3 manage.py runserver
+
+4. Go to Django administration (probably under http://127.0.0.1:8000/admin/)
+   and remove superuser rights from the second user you've created.
+
+5. Look around the website, try logging in, have fun :)
+
+Screenshots
+-----------
+.. figure:: ./screenshots/main_page.png
+
+   Index page of the example app
+
+.. figure:: ./screenshots/subpage.png
+
+   Page featuring a submenu
+
+.. figure:: ./screenshots/user_page.png
+
+   Page only shown to the authenticated users
+
+.. figure:: ./screenshots/secret_page.png
+
+   Page only shown to the superusers
+
+Learn more
 ----------
 
-To setup the project you need to create a new virtualenv directory and install
-the dependencies listed in the requirements file::
+Full documentation, including installation and configuration instructions, is
+available at https://django-simple-menu.readthedocs.io/.
 
-    virtualenv testenv
-    source testenv/bin/activate
-    pip install -r requirements.txt
+``django-simple-menu`` is released under the *BSD 2-Clause "Simplified" License*.
+If you like it, please consider contributing!
 
-Next setup the Django instance::
+``django-simple-menu`` was originally created by
+Evan Borgstom <evan@borgstrom.ca> and was further developed by many
+contributors_.
 
-    ./manage.py syncdb
-
-And finally run the project::
-
-    ./manage.py runserver
-
-Once you access the project at http://127.0.0.1:8000 you will see a menu that
-will change depending on if you're logged in, logged in as a staff member or
-logged in as a superuser. To fully see the menu system in action you will need
-to login to the Django admin and create two new users (one just a staff member
-and the other a regular user, you already have a superuser from the syncdb
-call) and then login with all three of them to compare the resulting menus.
+.. _contributors: https://github.com/jazzband/django-simple-menu/graphs/contributors

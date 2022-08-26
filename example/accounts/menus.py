@@ -1,36 +1,49 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-from menu import Menu, MenuItem
+from simple_menu import Menu, MenuItem
+
 
 def profile_title(request):
-    """
-    Return a personalized title for our profile menu item
+    """Return a personalized title for our profile menu item
     """
     # we don't need to check if the user is authenticated because our menu
     # item will have a check that does that for us
     name = request.user.get_full_name() or request.user
 
-    return "%s's Profile" % name
+    return f"{name}'s Profile"
 
-Menu.add_item("main", MenuItem("Accounts Index",
-                               reverse("accounts.views.index")))
+
+submenu_items = [
+    MenuItem(f"Page {i}",
+             reverse('accounts:subpage', kwargs={'i': i}),
+             icon=f'{i}-circle')
+    for i in range(1, 4)
+]
+Menu.add_item("user", MenuItem("Subpages",
+                               reverse('accounts:subpage', kwargs={'i': 1}),
+                               icon="menu-app",
+                               children=submenu_items))
 
 # this item will be shown to users who are not logged in
-Menu.add_item("user", MenuItem("Login",
-                               reverse('django.contrib.auth.views.login'),
-                               check=lambda request: not request.user.is_authenticated()))
+Menu.add_item("user", MenuItem("Sign in",
+                               reverse('accounts:sign_in'),
+                               icon='box-arrow-in-right',
+                               check=lambda r: not r.user.is_authenticated))
 
 # this will only be shown to logged in users and also demonstrates how to use
 # a callable for the title to return a customized title for each request
 Menu.add_item("user", MenuItem(profile_title,
-                               reverse('accounts.views.profile'),
-                               check=lambda request: request.user.is_authenticated()))
-Menu.add_item("user", MenuItem("Logout",
-                               reverse('django.contrib.auth.views.logout'),
-                               check=lambda request: request.user.is_authenticated()))
+                               reverse('accounts:profile'),
+                               icon='person-circle',
+                               check=lambda r: r.user.is_authenticated))
 
 # this only shows to superusers
-Menu.add_item("user", MenuItem("Admin",
-                               reverse("admin:index"),
-                               separator=True,
-                               check=lambda request: request.user.is_superuser))
+Menu.add_item("user", MenuItem("Secret superuser page",
+                               reverse("accounts:super_only"),
+                               icon='incognito',
+                               check=lambda r: r.user.is_superuser))
+
+Menu.add_item("user", MenuItem("Sign out",
+                               reverse('accounts:sign_out'),
+                               icon='box-arrow-right',
+                               check=lambda r: r.user.is_authenticated))
