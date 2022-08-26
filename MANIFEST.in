@@ -3,6 +3,8 @@ include LICENSE
 include README.rst
 include CHANGES
 include AUTHORS
+recursive-include simple_menu/templates *
+recursive-include simple_menu/templatetags *
 recursive-include menu/templates *
 recursive-include menu/templatetags *
 recursive-include docs *

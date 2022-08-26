@@ -9,7 +9,7 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS = ["menu"]
+INSTALLED_APPS = ["simple_menu"]
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(TEST_DIR, "static")

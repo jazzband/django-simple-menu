@@ -9,17 +9,11 @@ access from within your templates. This way you can have a menu for your main
 navigation, another menu for logged in users, another menu for anonymous users,
 etc.
 
-.. note::
-
-    Since we use the ``menu`` namespace you will get ``ImportError`` if you
-    have any files named ``menu.py``, ensure you use a plural version:
-    ``menus.py``
-
 To define your menus you need to create a file named ``menus.py`` inside of the
 app that you wish to hook menus up to. In the ``menus.py`` file you should
-import the ``Menu`` and ``MenuItem`` classes from the ``menu`` package::
+import the ``Menu`` and ``MenuItem`` classes from the ``simple_menu`` package::
 
-    from menu import Menu, MenuItem
+    from simple_menu import Menu, MenuItem
 
 The ``Menu`` class exposes a class method named ``add_item`` that accepts two
 arguments; the menu name you want to add to, and the ``MenuItem`` you're going
@@ -44,7 +38,8 @@ available in your templates. For example adding ``separator=True`` could be
 used to add separators to menus ``{% if item.separator %}<li
 class="divider"></li>{% endif %}``
 
-For the full list of ``MenuItem`` options see the `menu __init__.py source file`_.
+For the full list of ``MenuItem`` options see the
+`simple_menu __init__.py source file`_.
 
 Usage Example
 -------------
@@ -92,7 +87,7 @@ Once you have your menus defined you need to incorporate them into your
 templates. This is done through the ``generate_menu`` template tag::
 
     {% extends "base.html" %}
-    {% load menu %}
+    {% load simple_menu %}
 
     {% block content %}
     {% generate_menu %}
@@ -117,7 +112,7 @@ the following items will be set in the context for you.
 
 
 See the bootstrap-navbar.html file in the templates dir of the source code for
-an example that renders menus for the `Twitter Bootstrap Navbar Component`_.
+an example that renders menus for the `Bootstrap Navbar Component`_.
 You can use it like::
 
     {% with menu=menus.main %}{% include "bootstrap-navbar.html" %}{% endwith %}
@@ -137,7 +132,7 @@ This assumes you have a ``utils`` package.
 
     from django.core.urlresolvers import resolve
 
-    from menu import MenuItem
+    from simple_menu import MenuItem
 
 
     class ViewMenuItem(MenuItem):
@@ -158,7 +153,7 @@ This assumes you have a ``utils`` package.
 
      from utils.menus import ViewMenuItem
 
-     from menu import Menu, MenuItem
+     from simple_menu import Menu, MenuItem
 
      from django.core.urlresolvers import reverse
 
@@ -175,5 +170,5 @@ This assumes you have a ``utils`` package.
                                     children=reports_children))
 
 
-.. _menu __init__.py source file: https://github.com/jazzband/django-simple-menu/blob/master/menu/__init__.py
-.. _Twitter Bootstrap Navbar Component: http://twitter.github.com/bootstrap/components.html#navbar
+.. _simple_menu __init__.py source file: https://github.com/jazzband/django-simple-menu/blob/master/simple_menu/__init__.py
+.. _Bootstrap Navbar Component: https://getbootstrap.com/docs/5.1/components/navbar/
