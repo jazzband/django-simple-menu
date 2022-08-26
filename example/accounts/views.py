@@ -20,3 +20,7 @@ class IndexView(TemplateView):
 
 class ProfileView(TemplateView):
     template_name = 'accounts/profile.html'
+
+
+class SuperOnlyView(TemplateView):
+    template_name = 'accounts/super_only.html'

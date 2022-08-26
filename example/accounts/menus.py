@@ -27,10 +27,9 @@ Menu.add_item("user", MenuItem(profile_title,
                                check=lambda r: r.user.is_authenticated))
 
 # this only shows to superusers
-Menu.add_item("user", MenuItem("Administration",
-                               reverse("admin:index"),
-                               icon='shield-lock',
-                               separator=True,
+Menu.add_item("user", MenuItem("Secret superuser page",
+                               reverse("accounts:super_only"),
+                               icon='incognito',
                                check=lambda r: r.user.is_superuser))
 
 Menu.add_item("user", MenuItem("Sign out",
