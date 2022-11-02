@@ -5,7 +5,7 @@ Installing django-simple-menu
 
     pip install django-simple-menu
 
-#. Add ``menu`` to your ``INSTALLED_APPS`` list in your settings
+#. Add ``simple_menu`` to your ``INSTALLED_APPS`` list in your settings
 
 #. ``django-simple-menu`` requires that the ``request`` object be available in
    the context when you call the ``{% generate_menu %}`` template tag. This

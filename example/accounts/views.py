@@ -1,12 +1,29 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView
 
-def index(request):
-    return render_to_response('index.html',
-                              context_instance=RequestContext(request))
 
-@login_required
-def profile(request):
-    return render_to_response('registration/profile.html',
-                              context_instance=RequestContext(request))
+class SignInView(LoginView):
+    template_name = 'accounts/sign_in.html'
+
+    def get_success_url(self):
+        return reverse_lazy('accounts:profile')
+
+
+class SignOutView(LogoutView):
+    next_page = 'accounts:index'
+
+
+class IndexView(TemplateView):
+    template_name = 'accounts/index.html'
+
+
+class ProfileView(TemplateView):
+    template_name = 'accounts/profile.html'
+
+
+class SuperOnlyView(TemplateView):
+    template_name = 'accounts/super_only.html'
+
+class SubPageView(TemplateView):
+    template_name = 'accounts/subpage.html'

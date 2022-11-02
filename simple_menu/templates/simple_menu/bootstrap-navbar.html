@@ -1,0 +1,22 @@
+{% for item in menu %}
+    {% if item.visible %}
+        {% if item.separator %}
+            <li class="divider-vertical"></li>
+        {% endif %}
+
+        <li class="{% if item.selected %} active{% endif %}{% if item.children %} dropdown{% endif %}" id="top-menu-{{ item.slug }}">
+            <a href="{{ item.url }}"{% if item.children %} class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"{% endif %}>
+                {% if item.icon %}
+                    <i class="icon-{{ item.icon }} icon-white"></i>&nbsp;
+                {% endif %}
+                <span>{{ item.title }}</span>
+                {% if item.children %}
+                    &nbsp;<b class="caret"></b>
+                {% endif %}
+            </a>
+            {% if item.children %}
+                {% include 'bootstrap-navbar-submenu.html' with items=item.children %}
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}

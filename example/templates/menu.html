@@ -1,0 +1,13 @@
+<ul class="navbar-nav {{ navbar_class|default:"" }}">
+    {% for item in menu %}
+        <li class="nav-item">
+            <a class="nav-link {% if item.selected %}active{% endif %}"
+               href="{{ item.url }}">
+                {% if item.icon %}
+                    <i class="bi bi-{{ item.icon }}"></i>
+                {% endif %}
+                {{ item.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

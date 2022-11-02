@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Accounts | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="py-5">
+        <div class="container content">
+            <h1>Welcome!</h1>
+            <p class="lead">
+                This is an example website for
+                <a href="https://github.com/jazzband/django-simple-menu">django-simple-menu</a>.
+            </p>
+            <section>
+                <h2>How to use this example</h2>
+                <ol>
+                    <li>
+                        Create a superuser:
+                        <code class="user-select-all">python3 manage.py
+                            createsuperuser --username "admin"</code>
+                    </li>
+                    <li>
+                        Create another superuser:
+                        <code class="user-select-all">python3 manage.py
+                            createsuperuser --username "guest"</code>
+                    </li>
+                    <li>
+                        Log in as <code>admin</code> into
+                        <a href="/admin">Django administration</a>
+                        and remove admin and staff rights from
+                        <code>guest</code>.
+                    </li>
+                    <li>
+                        Try logging in and out on the website and visit
+                        the pages in the top menu.
+                    </li>
+                </ol>
+            </section>
+            <section>
+                <h2>More</h2>
+                <ul>
+                    <li>
+                        <i class="bi bi-journal-code"></i>
+                        <a href="https://django-simple-menu.readthedocs.io/">
+                            Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <i class="bi bi-github"></i>
+                        <a href="https://github.com/jazzband/django-simple-menu">
+                            Source code
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+{% endblock %}

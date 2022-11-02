@@ -15,7 +15,7 @@ repos:
     rev: 1.11.0
     hooks:
     -   id: django-upgrade
-        args: [--target-version, "2.2"]
+        args: [--target-version, "3.2"]
 -   repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.9.0
     hooks:

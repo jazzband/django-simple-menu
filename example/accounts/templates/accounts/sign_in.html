@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Sign in | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <main class="p-4">
+        <section class="container w-25 mx-auto mb-5">
+            <form action="{% url 'accounts:sign_in' %}" method="post">
+                {% csrf_token %}
+                <h1>Sign in</h1>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username"
+                           name="username" autofocus>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control"
+                           id="password" name="password">
+                </div>
+
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Sign in
+                </button>
+            </form>
+        </section>
+        <section class="container content">
+            The menu item for this page is being shown to everyone,
+            who is not authenticated:
+            <pre><code>Menu.add_item("user", MenuItem("Sign in",
+                               reverse('accounts:sign_in'),
+                               icon='box-arrow-in-right',
+                               <mark>check=lambda r: not r.user.is_authenticated</mark>))</code></pre>
+        </section>
+    </main>
+{% endblock %}

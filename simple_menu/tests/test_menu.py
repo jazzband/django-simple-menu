@@ -7,7 +7,7 @@ from django.template import Template, Context
 from django.test import TestCase
 from django.test.client import RequestFactory
 
-from menu import Menu, MenuItem
+from simple_menu import Menu, MenuItem
 
 # XXX TODO: test MENU_HIDE_EMPTY
 
