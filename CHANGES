@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.0.1 - Released November 3rd, 2022
+- Fix generation of version number using setuptools_scm which prevented a
+  proper release of version 2.0.0
+
 Version 2.0.0 - Released November 2nd, 2022
 - BREAKING: dropped support for Python < 3.6
 - BREAKING: dropped support for Django < 3.2
