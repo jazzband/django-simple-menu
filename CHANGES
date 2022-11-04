@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.0.2 - Released November 4th, 2022
+ - Fixed generation of documentation on ReadTheDocs
+
 Version 2.0.1 - Released November 3rd, 2022
 - Fix generation of version number using setuptools_scm which prevented a
   proper release of version 2.0.0
