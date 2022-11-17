@@ -187,7 +187,7 @@ class MenuItem:
 
     def process(self, request):
         """
-        process determines if this item should visible, if its selected, etc...
+        process determines if this item should be visible, if its selected, etc...
         """
         # if we're not visible we return since we don't need to do anymore processing
         self.check(request)
