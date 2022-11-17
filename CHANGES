@@ -1,8 +1,11 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.0.4 - Released November 17th, 2022
+ - Support Python 3.11 and Django 4.1 (#110, #111)
+
 Version 2.0.3 - Released November 17th, 2022
- - Fixed typo ina  docstring (#109)
+ - Fixed typo in a docstring (#109)
 
 Version 2.0.2 - Released November 4th, 2022
  - Fixed generation of documentation on ReadTheDocs
