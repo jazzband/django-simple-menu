@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.1.0 - Released November 27th, 2022
+ - Allow MenuItem's url to be callable (#70, #71, #112)
+
 Version 2.0.4 - Released November 17th, 2022
  - Support Python 3.11 and Django 4.1 (#110, #111)
 
