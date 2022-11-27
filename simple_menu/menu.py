@@ -194,6 +194,10 @@ class MenuItem:
         if not self.visible:
             return
 
+        # evaluate our url
+        if callable(self.url):
+            self.url = self.url(request)
+
         # evaluate our title
         if callable(self.title):
             self.title = self.title(request)
