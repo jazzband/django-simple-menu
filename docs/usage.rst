@@ -23,14 +23,14 @@ The ``MenuItem`` class should be instantiated and passed to the ``add_item``
 class method with the appropriate parameters. ``MenuItem`` accepts a wide
 number of options to its constructor method, the majority of which are simply
 attributes that become available in your templates when you're rendering out
-the menus. 
+the menus.
 
-``MenuItem`` requires the first two arguments: 
+``MenuItem`` requires the first two arguments:
 
  * The ``title`` of the item
- * The ``url`` of the item, which can be a string or a callable which accepts the request 
+ * The ``url`` of the item, which can be a string or a callable which accepts the request
  object and returns a string.
- 
+
 The keywords that affect menu generation are:
 
 * The ``weight`` keyword argument affects sorting of the menu.
