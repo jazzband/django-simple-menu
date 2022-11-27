@@ -39,6 +39,13 @@ class MenuTests(TestCase):
                 return "-".join([request.path, self.kids3_2_desired_title])
             return 'kids3-2'
 
+        self.kids3_2_desired_url = None
+        def kids3_2_url(request):
+            "Allow the url of kids3-2 to be changed"
+            if self.kids3_2_desired_url is not None:
+                return '/'.join([request.path, self.kids3_2_desired_url])
+            return '/parent3/kids3-2'
+
         def kids2_2_check(request):
             "Hide kids2-2 whenever the request path ends with /hidden"
             if request.path.endswith('/hidden'):
@@ -66,7 +73,7 @@ class MenuTests(TestCase):
 
         kids3 = (
             CustomMenuItem("kids3-1", "/parent3/kids3-1", children=kids3_1, slug="salty"),
-            CustomMenuItem(kids3_2_title, "/parent3/kids3-2")
+            CustomMenuItem(kids3_2_title, kids3_2_url)
         )
 
         Menu.items = {}
@@ -160,6 +167,15 @@ class MenuTests(TestCase):
         request = self.factory.get('/parent3')
         items = Menu.process(request, 'test')
         self.assertEqual(items[1].children[1].title, "/parent3-fun")
+
+    def test_callable_url(self):
+        """
+        Ensure callable urls work
+        """
+        self.kids3_2_desired_url = "custom"
+        request = self.factory.get('/parent3')
+        items = Menu.process(request, 'test')
+        self.assertEqual(items[1].children[1].url, "/parent3/custom")
 
     def test_select_parents(self):
         """
