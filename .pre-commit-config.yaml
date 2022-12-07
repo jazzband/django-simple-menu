@@ -25,3 +25,10 @@ repos:
     -   id: python-no-log-warn
     -   id: rst-backticks
     -   id: rst-directive-colons
+-   repo: https://github.com/jazzband/pip-tools
+    rev: '6.11.0'
+    hooks:
+    -   id: pip-compile
+        name: pip-compile requirements-dev.txt
+        args: [--extra, develop, -o, requirements-dev.txt, setup.cfg]
+        files: ^setup\.cfg|pyproject\.toml$
