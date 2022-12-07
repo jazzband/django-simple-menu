@@ -30,5 +30,5 @@ repos:
     hooks:
     -   id: pip-compile
         name: pip-compile requirements-dev.txt
-        args: [--extra, develop, -o, requirements-dev.txt, setup.cfg]
+        args: [--resolver=backtracking, --extra=develop, --output-file=requirements-dev.txt, setup.cfg]
         files: ^setup\.cfg|pyproject\.toml$
