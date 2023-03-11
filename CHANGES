@@ -1,6 +1,9 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.1.1 - Released March 12th, 2023
+ - Install `importlib_metadata` only on older Python versions
+
 Version 2.1.0 - Released November 27th, 2022
  - Allow MenuItem's url to be callable (#70, #71, #112)
 
