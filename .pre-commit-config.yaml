@@ -25,3 +25,7 @@ repos:
     -   id: python-no-log-warn
     -   id: rst-backticks
     -   id: rst-directive-colons
+-   repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v2.3.0
+    hooks:
+    -   id: setup-cfg-fmt
