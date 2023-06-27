@@ -1,5 +1,9 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4"]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools>=42",
+  "setuptools_scm[toml]>=3.4",
+]
 
 [tool.setuptools_scm]
 # this empty section means: use_scm_version=True
