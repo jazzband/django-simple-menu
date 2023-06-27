@@ -124,14 +124,20 @@ class Menu:
         # determine if we should apply 'selected' to parents when one of their
         # children is the 'selected' menu
         if getattr(settings, 'MENU_SELECT_PARENTS', False):
-            def is_child_selected(item):
-                for child in item.children:
-                    if child.selected or is_child_selected(child):
-                        return True
+            def get_path_selected(item, parents):
+                if item.selected:
+                    return parents + [item]
+                else:
+                    for child in item.children:
+                        path_selected = get_path_selected(child, parents + [item])
+                        if path_selected:
+                            return path_selected
 
             for item in visible:
-                if is_child_selected(item):
-                    item.selected = True
+                path_selected = get_path_selected(item, [])
+                if path_selected:
+                    for item_selected in path_selected:
+                        item_selected.selected = True
 
         return visible
 
