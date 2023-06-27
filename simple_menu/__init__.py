@@ -9,7 +9,7 @@ from .menu import Menu, MenuItem
 
 try:
     __version__ = version("django-simple-menu")
-except PackageNotFoundError:
+except PackageNotFoundError:  # pragma: no cover
     # package is not installed
     __version__ = None
 

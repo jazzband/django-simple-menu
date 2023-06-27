@@ -1,11 +1,15 @@
+ci:
+    autoupdate_schedule: monthly
+
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-    -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
     -   id: mixed-line-ending
+    -   id: check-toml
+    -   id: check-yaml
 -   repo: https://github.com/asottile/pyupgrade
     rev: v3.7.0
     hooks:
@@ -25,3 +29,15 @@ repos:
     -   id: python-no-log-warn
     -   id: rst-backticks
     -   id: rst-directive-colons
+-   repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v2.3.0
+    hooks:
+    -   id: setup-cfg-fmt
+-   repo: https://github.com/tox-dev/pyproject-fmt
+    rev: "0.12.1"
+    hooks:
+    -   id: pyproject-fmt
+-   repo: https://github.com/tox-dev/tox-ini-fmt
+    rev: "1.2.0"
+    hooks:
+    -   id: tox-ini-fmt
