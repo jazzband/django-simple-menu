@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 2.1.2 - Released June 27th, 2023
+ - Correctly parse a deeper menu structure (#63, #133)
+ - Improved DX and CI
+
 Version 2.1.1 - Released March 12th, 2023
  - Install `importlib_metadata` only on older Python versions
 
