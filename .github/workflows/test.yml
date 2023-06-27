@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  FORCE_COLOR: "1"
+
 jobs:
   build:
     name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
