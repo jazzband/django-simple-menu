@@ -1,6 +1,0 @@
-[run]
-source = simple_menu
-branch = 1
-
-[report]
-omit = *migrations*,.tox/*,setup.py,*settings.py,menu/*
