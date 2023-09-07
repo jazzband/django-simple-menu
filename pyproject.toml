@@ -5,6 +5,53 @@ requires = [
   "setuptools_scm[toml]>=3.4",
 ]
 
+[project]
+name = "django-simple-menu"
+description = "Simple, yet powerful, code-based menus for Django applications"
+readme = "README.rst"
+license = {text = "BSD 2-Clause"}
+authors = [{"name"= "Evan Borgstrom", "email"="evan@borgstrom.ca"}]
+requires-python = ">=3.6"
+classifiers =[
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.0",
+  "Framework :: Django :: 4.1",
+  "Framework :: Django :: 4.2",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dynamic = [
+  "version",
+]
+dependencies = [
+  "Django>=3.2",
+  'importlib_metadata; python_version < "3.8"',
+]
+[project.urls]
+"Source Code" = "https://github.com/jazzband/django-simple-menu"
+
+[tool.setuptools]
+packages =[
+    "simple_menu",
+    "menu",
+    ]
+include-package-data = true
+license-files = ["LICENSE"]
+
 [tool.setuptools_scm]
 # this empty section means: use_scm_version=True
 version_scheme = "guess-next-dev"
