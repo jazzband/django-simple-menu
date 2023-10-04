@@ -1,7 +1,7 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unreleased changes
+Version 2.1.3 - Released October 4th, 2023
 - Stop testing under Python 3.6, 3.7, and Django 4.0 (#138, #140)
 - Migrate from setup.cfg to pyproject.toml (#138)
 
