@@ -45,6 +45,10 @@ Quickstart
 
 **Requirements:** Python 3.6+, Django 3.2+
 
+**Note:** While this package does support Python 3.6 and 3.7 as well as
+Django 4.0, we do not test the package under these versions and may miss some
+bugs.
+
 1. Install the ``django-simple-menu`` package.
 
 2. Add ``simple_menu`` to your ``INSTALLED_APPS``.

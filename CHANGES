@@ -1,6 +1,10 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Unreleased changes
+- Stop testing under Python 3.6, 3.7, and Django 4.0 (#138, #140)
+- Migrate from setup.cfg to pyproject.toml (#138)
+
 Version 2.1.2 - Released June 27th, 2023
  - Correctly parse a deeper menu structure (#63, #133)
  - Improved DX and CI
