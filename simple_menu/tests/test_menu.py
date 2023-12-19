@@ -275,7 +275,8 @@ class MenuItemTests(TestCase):
         item = MenuItem("test", "/test", children=[child_item])
 
         # Process the item
-        item.process()
+        request = RequestFactory().get('/test')
+        item.process(request)
 
         # Check that non-visible child items are still in the menu
         self.assertIn(child_item, item.children)
@@ -291,7 +292,8 @@ class MenuItemTests(TestCase):
         item = MenuItem("test", "/test", children=[child_item])
 
         # Process the item
-        item.process()
+        request = RequestFactory().get('/test')
+        item.process(request)
 
         # Check that non-visible child items removed still in the menu
         self.assertNotIn(child_item, item.children)
