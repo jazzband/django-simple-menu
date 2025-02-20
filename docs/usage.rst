@@ -128,8 +128,8 @@ You can use it like::
 Internacionalization
 --------------------
 
-If your project uses ``i18n_patterns`` for handling localized URLs, you should define the `url`
-argument in `MenuItem` as a callable instead of a static string. This ensures that the correct
+If your project uses ``i18n_patterns`` for handling localized URLs, you should define the ``url``
+argument in ``MenuItem`` as a callable instead of a static string. This ensures that the correct
 localized URL is resolved based on the active language.
 
 For example, consider the following implementation inside a ``utils/menus.py`` file:
