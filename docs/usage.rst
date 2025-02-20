@@ -128,11 +128,11 @@ You can use it like::
 Internacionalization
 --------------------
 
-If your project uses `i18n_patterns` for handling localized URLs, you should define the `url`
+If your project uses ``i18n_patterns`` for handling localized URLs, you should define the `url`
 argument in `MenuItem` as a callable instead of a static string. This ensures that the correct
 localized URL is resolved based on the active language.
 
-For example, consider the following implementation inside a `utils/menus.py` file:
+For example, consider the following implementation inside a ``utils/menus.py`` file:
 
 ``utils/menus.py``::
 
@@ -150,7 +150,7 @@ For example, consider the following implementation inside a `utils/menus.py` fil
         ),
     )
 
-When using `i18n_patterns`, Django assigns language-specific prefixes to URLs (e.g., `/en/portal/index/` for English and `/fr/portal/index/` for French). By defining the `url` as a callable (`lambda request: reverse("portal:index")`), Django ensures that it resolves the correct localized URL dynamically at runtime, rather than hardcoding it.
+When using ``i18n_patterns``, Django assigns language-specific prefixes to URLs (e.g., ``/en/portal/index/`` for English and ``/fr/portal/index/`` for French). By defining the ``url`` as a callable (``lambda request: reverse("portal:index")``), Django ensures that it resolves the correct localized URL dynamically at runtime, rather than hardcoding it.
 
 
 Check generalizations
