@@ -31,7 +31,7 @@ class MenuNode(template.Node):
 
         # Making it backward compatible (these should probably be renamed selected_menuitem and selected_menu, respectively)
         selected_menu = None
-        selected_menu_menu = None 
+        selected_menu_menu = None
         for name in menus:
             found_menu = find_selected(menus[name])
             if found_menu:
