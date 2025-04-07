@@ -2,17 +2,17 @@
 build-backend = "setuptools.build_meta"
 requires = [
   "setuptools>=42",
-  "setuptools_scm[toml]>=3.4",
+  "setuptools-scm[toml]>=3.4",
 ]
 
 [project]
 name = "django-simple-menu"
 description = "Simple, yet powerful, code-based menus for Django applications"
 readme = "README.rst"
-license = {text = "BSD 2-Clause"}
-authors = [{"name"= "Evan Borgstrom", "email"="evan@borgstrom.ca"}]
+license = { text = "BSD 2-Clause" }
+authors = [ { "name" = "Evan Borgstrom", "email" = "evan@borgstrom.ca" } ]
 requires-python = ">=3.6"
-classifiers =[
+classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Framework :: Django",
   "Framework :: Django :: 3.2",
@@ -31,6 +31,7 @@ classifiers =[
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Software Development :: Libraries",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -38,19 +39,18 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "Django>=3.2",
-  'importlib_metadata; python_version < "3.8"',
+  "django>=3.2",
+  "importlib-metadata; python_version<'3.8'",
 ]
-[project.urls]
-"Source Code" = "https://github.com/jazzband/django-simple-menu"
+urls."Source Code" = "https://github.com/jazzband/django-simple-menu"
 
 [tool.setuptools]
-packages =[
-    "simple_menu",
-    "menu",
-    ]
+packages = [
+  "simple_menu",
+  "menu",
+]
 include-package-data = true
-license-files = ["LICENSE"]
+license-files = [ "LICENSE" ]
 
 [tool.setuptools_scm]
 # this empty section means: use_scm_version=True
@@ -61,7 +61,7 @@ local_scheme = "no-local-version"
 source = [
   "simple_menu",
 ]
-plugins = ["covdefaults"]
+plugins = [ "covdefaults" ]
 
 [tool.coverage.report]
 fail_under = 85
