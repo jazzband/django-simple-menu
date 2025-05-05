@@ -1,7 +1,7 @@
 django-simple-menu changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unreleased
+Version 2.1.4 - Release May 6th, 2025
 - Test on Python 3.12
 - Fix deprecation notice appearing whe it shouldn't (#153)
 
