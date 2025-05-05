@@ -217,7 +217,7 @@ class MenuTests(TestCase):
         """
         request = self.factory.get('/parent3/kids3-1')
         out = Template(
-            "{% load menu %}"
+            "{% load simple_menu %}"
             "{% generate_menu %}"
             "{% for item in menus.test %}"
             "{{ item.title }},"
@@ -240,7 +240,7 @@ class MenuTests(TestCase):
         """
         request = self.factory.get('/parent2/kids2-1')
         out = Template(
-            "{% load menu %}"
+            "{% load simple_menu %}"
             "{% generate_menu %}"
             "{% for item in menus.test %}"
             "{{ item.title }}{{ item.doesntexist }},"
