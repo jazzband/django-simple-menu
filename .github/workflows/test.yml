@@ -10,10 +10,12 @@ on:
 env:
   FORCE_COLOR: "1"
 
+permissions: {}
+
 jobs:
   build:
     name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -43,19 +45,23 @@ jobs:
             python-version: '3.10'
           - django-version: '4.2'
             python-version: '3.11'
-
-          - django-version: 'main'
-            python-version: '3.10'
-          - django-version: 'main'
-            python-version: '3.11'
-          - django-version: 'main'
+          - django-version: '4.2'
             python-version: '3.12'
 
+          # - django-version: 'main'
+          #   python-version: '3.10'
+          # - django-version: 'main'
+          #   python-version: '3.11'
+          # - django-version: 'main'
+          #   python-version: '3.12'
+
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
@@ -72,7 +78,8 @@ jobs:
       env:
         DJANGO: ${{ matrix.django-version }}
 
-    - name: Upload coverage
-      uses: codecov/codecov-action@v3
-      with:
-        name: Python ${{ matrix.python-version }}
+    # FIXME: Codecov requires a token, which we do not have
+    # - name: Upload coverage
+    #   uses: codecov/codecov-action@v5
+    #   with:
+    #     name: Python ${{ matrix.python-version }}
