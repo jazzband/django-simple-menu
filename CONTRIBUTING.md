@@ -1,3 +1,1 @@
-[![Jazzband](https://jazzband.co/static/img/jazzband.svg)](https://jazzband.co/)
-
-This is a [Jazzband](https://jazzband.co/) project. By contributing you agree to abide by the [Contributor Code of Conduct](https://jazzband.co/about/conduct) and follow the [guidelines](https://jazzband.co/about/guidelines).
+This is a [django-commons](https://django-commons.org/) project. By contributing you agree to abide by the [Django Commons Code of Conduct](./CODE_OF_CONDUCT.md).

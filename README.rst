@@ -68,7 +68,7 @@ bugs.
 To quickly see ``django-simple-menu`` in action, check out the
 `example project`_.
 
-.. _example project: https://github.com/jazzband/django-simple-menu/tree/master/example
+.. _example project: https://github.com/django-commons/django-simple-menu/tree/master/example
 
 
 More
@@ -84,4 +84,4 @@ If you like it, please consider contributing!
 Evan Borgstom <evan@borgstrom.ca> and was further developed by many
 contributors_.
 
-.. _contributors: https://github.com/jazzband/django-simple-menu/graphs/contributors
+.. _contributors: https://github.com/django-commons/django-simple-menu/graphs/contributors

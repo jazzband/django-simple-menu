@@ -13,4 +13,4 @@ except PackageNotFoundError:  # pragma: no cover
     # package is not installed
     __version__ = None
 
-__url__ = 'https://github.com/jazzband/django-simple-menu'
+__url__ = 'https://github.com/django-commons/django-simple-menu'

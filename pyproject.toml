@@ -42,7 +42,7 @@ dependencies = [
   'importlib_metadata; python_version < "3.8"',
 ]
 [project.urls]
-"Source Code" = "https://github.com/jazzband/django-simple-menu"
+"Source Code" = "https://github.com/django-commons/django-simple-menu"
 
 [tool.setuptools]
 packages =[
