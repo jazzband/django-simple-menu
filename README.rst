@@ -1,35 +1,25 @@
-===================================
-django-simple-menu |latest-version|
-===================================
+==================
+django-simple-menu
+==================
 
-|jazzband| |build-status| |coverage| |docs| |python-support| |django-support|
-
-.. |latest-version| image:: https://img.shields.io/pypi/v/django-simple-menu.svg
-   :target: https://pypi.python.org/pypi/django-simple-menu
+.. image:: https://img.shields.io/pypi/v/django-simple-menu.svg
+   :target: https://pypi.org/project/django-simple-menu/
    :alt: Latest version on PyPI
 
-.. |jazzband| image:: https://jazzband.co/static/img/badge.svg
-   :target: https://jazzband.co/
-   :alt: Jazzband
+.. image:: https://github.com/django-commons/django-simple-menu/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/django-commons/django-simple-menu/actions/workflows/test.yml
+   :alt: Build status
 
-.. |build-status| image:: https://github.com/jazzband/django-simple-menu/actions/workflows/test.yml/badge.svg
-   :target: https://github.com/jazzband/django-simple-menu/actions
-   :alt: Build Status
-
-.. |coverage| image:: https://img.shields.io/codecov/c/github/jazzband/django-simple-menu.svg
-   :target: https://codecov.io/github/jazzband/django-simple-menu
-   :alt: Test coverage status
-
-.. |docs| image:: https://img.shields.io/readthedocs/django-simple-menu/latest.svg
+.. image:: https://img.shields.io/readthedocs/django-simple-menu/latest.svg
    :target: https://django-simple-menu.readthedocs.io/
-   :alt: Documentation status
+   :alt: Documentation
 
-.. |python-support| image:: https://img.shields.io/pypi/pyversions/django-simple-menu
-   :target: https://pypi.python.org/pypi/django-simple-menu
+.. image:: https://img.shields.io/pypi/pyversions/django-simple-menu
+   :target: https://pypi.org/project/django-simple-menu/
    :alt: Supported Python versions
 
-.. |django-support| image:: https://img.shields.io/pypi/djversions/django-simple-menu
-   :target: https://pypi.org/project/django-simple-menu
+.. image:: https://img.shields.io/pypi/djversions/django-simple-menu
+   :target: https://pypi.org/project/django-simple-menu/
    :alt: Supported Django versions
 
 ``django-simple-menu`` is an entirely code based menu system, because, who
