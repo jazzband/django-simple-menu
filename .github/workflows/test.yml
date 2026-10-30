@@ -15,7 +15,8 @@ permissions: {}
 jobs:
   build:
     name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
-    runs-on: ubuntu-latest
+    # TODO: replace with ubuntu-latest after dropping other versions
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
